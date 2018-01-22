@@ -25,14 +25,7 @@
 |---		 	| --- 			| --- |
 | id		 	| INT			| Id van de bestelling								|
 | klant	 		| INT		 	| Id van de klant									|
-| afhalen		| BOOLEAN	 	| Als de klant de pizzas wil afhalen.				|
-| adres			| VARCHAR(255)  | Adres van de klant als hij het wil afhalen.		|
-
-## BestellingenInhoud
-|Sleutel  		| type 			| beschrijving |
-|---		 	| --- 			| --- |
-| id		 	| INT			| Id van de bestelling								|
-| klant	 		| INT		 	| Id van de klant									|
-| pizza	 		| INT		 	| Id van de pizza									|
-
-Note: In deze tabel staan de producten die besteld zijn bij de bestellingen.
+| bestelling    | TEXT          | Bestelling in text formaat                        |
+| afhalen		| BOOLEAN	 	| Als de klant de pizzas wil afhalen				|
+| adres			| VARCHAR(255)  | Adres van de klant als hij het wil afhalen		|
+| totaalprijs   | DECIMAL       | Totale prijs van de bestelling                    |
