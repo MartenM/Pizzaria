@@ -9,21 +9,24 @@
 | email		 	| VARCHAR(64) 	| Email van de klant	 							|
 | wachtwoord 	| VARCHAR(64) 	| Wachtwoord van de klant (hashed)					|
 | bestellingen	| INT	 		| Aantal bestellingen dat de klant heeft gemaakt 	|
+| spaarputen	| INT			| Aantal spaarputen dat de klant heeft verzameld	|
 | banned		| BOOLEAN		| Geeft aan of de gebruiker gebant is				|
 
-## Producten
+## Pizzas
 |Sleutel  		| type 			| beschrijving |
 |---		 	| --- 			| --- |
-| id		 	| INT			| Id van het product								|
-| naam	 		| VARCHAR(64) 	| Naam van het product								|
-| prijs		 	| DECIMAL	 	| Prijs van het product	 							|
-| voorraad	 	| INT		 	| Aantal prodcuten in de voorraad					|
+| id		 	| INT			| Id van de pizza									|
+| naam	 		| VARCHAR(64) 	| Naam van de pizza									|
+| prijs		 	| DECIMAL	 	| Prijs van de pizza	 							|
+| voorraad	 	| INT		 	| Aantal pizzas in de voorraad.						|
 
 ## Bestellingen
 |Sleutel  		| type 			| beschrijving |
 |---		 	| --- 			| --- |
 | id		 	| INT			| Id van de bestelling								|
 | klant	 		| INT		 	| Id van de klant									|
+| afhalen		| BOOLEAN	 	| Als de klant de pizzas wil afhalen.				|
+| adres			| VARCHAR(255)  | Adres van de klant als hij het wil afhalen.		|
 
 ## BestellingenInhoud
 |Sleutel  		| type 			| beschrijving |
