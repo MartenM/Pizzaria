@@ -1,0 +1,68 @@
+body {
+    font-family: "Arial Black";
+}
+
+.navbar {
+    background-color: #51aa4c;
+    margin-bottom: 0 !important;
+}
+
+.navbar ul {
+    margin-top: 14px;
+}
+
+.navbar a {
+    text-shadow: 0px 0px 8px black;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 14px 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.jumbotron {
+    background-image:url('https://4.bp.blogspot.com/-mUrAOuDpwoI/VEPN1OEWbkI/AAAAAAABSDs/JSVf9DONVBo/s0/It%27s%2Bok%2Bto%2Beat%2Bpizza%2BWallpaper.jpg');
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1em solid #51aa4c;
+}
+
+.jumbotron .container {
+    position: relative;
+    top:100px;
+}
+
+.jumbotron h1 {
+    text-shadow: 2px 2px 8px black;
+    color: #fff;
+    font-size: 48px;  
+    font-family: 'Shift', sans-serif;
+    font-weight: bold;
+}
+
+.jumbotron p {
+    text-shadow: 2px 2px 8px black;
+    font-size: 20px;
+    color: #fff;
+}
+
+.jumbotron a {
+    text-shadow: 2px 2px 8px black;
+    font-size: 35px;
+    color: #44aa49;
+    font-family: "Arial Black";
+}
+
+.jumbotron a:hover {
+    text-decoration: none;
+}
