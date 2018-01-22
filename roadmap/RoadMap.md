@@ -31,4 +31,5 @@
 | id		 	| INT			| Id van de bestelling								|
 | klant	 		| INT		 	| Id van de klant									|
 | pizza	 		| INT		 	| Id van de pizza									|
+
 Note: In deze tabel staan de producten die besteld zijn bij de bestellingen.
