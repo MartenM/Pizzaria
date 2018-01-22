@@ -9,16 +9,26 @@ body {
 
 .navbar ul {
     margin-top: 14px;
+    padding-top: auto;
+    padding-bottom: auto;
 }
 
 .navbar a {
     text-shadow: 0px 0px 8px black;
     color: white;
-    font-size: 2em;
+    font-size: 1em;
     font-weight: bold;
     padding: 14px 10px;
-    text-transform: uppercase;
-    text-decoration: none;
+}
+
+#logo{
+    font-size: 2em;
+}
+
+#center{
+    position: absolute;
+    top: 50%; left: 70%;
+    transform: translate(-50%,-50%);
 }
 
 .navbar a:hover {
@@ -44,7 +54,7 @@ body {
 
 .jumbotron h1 {
     text-shadow: 2px 2px 8px black;
-    color: #fff;
+    color: wheat !important;
     font-size: 48px;  
     font-family: 'Shift', sans-serif;
     font-weight: bold;
@@ -65,4 +75,37 @@ body {
 
 .jumbotron a:hover {
     text-decoration: none;
+}
+
+
+.pizzainfo{
+    padding-top: 1em;
+}
+
+.pizzainfo h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.pizzainfo h4{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.holder{
+    max-width: 95%;
+    background-image: url(resources/img/pizzabackground.png);
+    background-size: cover;
+    border-radius: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 5px solid #51aa4c;
+}
+
+.pizzainfo img{
+    max-width: 100%;
 }

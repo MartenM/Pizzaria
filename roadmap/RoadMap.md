@@ -1,15 +1,24 @@
+# PHP en HTML paginas
+## index.html
+Pagina die de gebruiker ziet.
+
+##
+
+
 # Database plannen
 ## Klanten
 |Sleutel  		| type 			| beschrijving |
 |---		 	| --- 			| --- |
-| id		 	| INT			| Id van de klant									|
+| id		 	| INT(11)		| Id van de klant									|
+| hash		 	| VARCHAR(32)	| Unique hash voor van de klant						|
 | voornaam 		| VARCHAR(64) 	| Voornaam van de klant								|
 | achternaam 	| VARCHAR(64) 	| Achternaam van de klant 							|
 | registratie 	| DATETIME	 	| Registratie datum									|
-| email		 	| VARCHAR(64) 	| Email van de klant	 							|
-| wachtwoord 	| VARCHAR(64) 	| Wachtwoord van de klant (hashed)					|
+| email		 	| VARCHAR(100) 	| Email van de klant	 							|
+| wachtwoord 	| VARCHAR(100) 	| Wachtwoord van de klant (hashed)					|
 | bestellingen	| INT	 		| Aantal bestellingen dat de klant heeft gemaakt 	|
 | spaarputen	| INT			| Aantal spaarputen dat de klant heeft verzameld	|
+| actief		| BOOLEAN		| Geeft aan of de zijn account heeft geactiveerd	|
 | banned		| BOOLEAN		| Geeft aan of de gebruiker gebant is				|
 
 ## Pizzas
