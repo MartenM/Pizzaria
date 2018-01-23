@@ -1,0 +1,43 @@
+.venster{
+    padding-top: 10em;
+    height: 80%;
+}
+
+.loginform {
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 30em;
+    
+    display: table;
+    
+    background-color: whitesmoke;
+    border: 0.05em solid #efefef;
+    border-radius: 1em;
+    box-shadow: 0px 0px 16px black;
+}
+
+.loginform form {
+    padding: 1em;
+    width: 20%;
+}
+
+#ftextbox {
+    padding: 1em;
+    width: 30em !important;
+    border: 0.2em solid #51aa4c;
+    border-radius: 1em;
+}
+#fbutton {
+    font-weight: bold;
+    padding: 1em;
+    color: white;
+    background-color: #3b9435;
+    border: 0.2em solid #51aa4c;
+    border-radius: 1em;
+    padding: 1em;
+    width: 30em !important;
+}
+#fbutton span {
+    font-size: 1.5em;
+}

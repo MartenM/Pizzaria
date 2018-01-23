@@ -8,11 +8,7 @@
         echo($_POST['wachtwoord']);
         
         
-        //REGISTER METHODS!
-        //CREATE private hash
-        //hash password
-        //STORE
-        //redirect to login.
+        //LOGIN METHODS!
     }
 ?>
 
@@ -20,7 +16,7 @@
 <html lang="en">
 <head>
     <!-- De titel van de website -->
-    <title>DRL Pizza | Register</title>
+    <title>DRL Pizza | Login</title>
     
     <!-- Charset -->
     <meta charset="utf-8">
@@ -29,13 +25,13 @@
     <link rel="stylesheet" href="..\animate.css">
     <link rel="stylesheet" href="forms.css">
     
-    <!-- Latest compiled and minified CSS van boostrap -->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme voor boostrap -->
+    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript voor boostrap -->
+    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -70,20 +66,14 @@
                 <form action="login.php" method="post">
                     <h2>Login</h2>
                     <hr>
-                    <h4>Voornaam</h4>
-                    <input type="text" required id="ftextbox" name="voornaam" placeholder="Voornaam...">
-                    <br>
-                    <h4>Achternaam</h4>
-                    <input type="text" required id="ftextbox" name="achternaam" placeholder="Achternaam...">
-                    <br>
                     <h4>Email</h4>
                     <input type="email" required id="ftextbox" name="email" placeholder="Email...">
-                    <br>
+                    <p></p>
                     <h4>Wachtwoord</h4>
-                    <input type="wachtwoord" required id="ftextbox" name="wachtwoord" placeholder="Wachtwoord...">
+                    <input type="password" required id="ftextbox" name="wachtwoord" placeholder="Wachtwoord...">
                     <br>
                     <br>
-                    <button type="submit" id="fbutton" name="registeer"><span>Registreer</span></button>
+                    <button type="submit" id="fbutton" name="registeer"><span>Login</span></button>
                 </form>
             </div>
         </div>

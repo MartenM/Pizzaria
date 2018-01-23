@@ -1,6 +1,12 @@
 # PHP en HTML paginas
 ## index.html
 Pagina die de gebruiker ziet.
+## login.php
+Pagina waarop ingelogd kan worden.
+## register.php
+Pagina waar nieuwe gebruikers zich kunnen registeren.
+## bestellingen.php
+Pagina waar gebruikers bestellingen kunnen doen.
 
 ##
 
