@@ -1,14 +1,26 @@
 <?php
     session_start();
+
+    // Error message die in het geval van een error gebruikt kan worden.
+    $error_msg = '';
     
     echo($_SERVER['REQUEST_METHOD']);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     {
-        echo($_POST['email']);
-        echo($_POST['wachtwoord']);
+        // De methode is POST. De gebruiker verstuurt het formulier met verschillende variablen.
+        echo("Registering new account...");
+
+        // Creeër de database connectie in het db.php script.
+        $mysqli = '';
+        require 'db.php';
+        
+        // Hier halen we alle POST variablen door een filter om te zorgen dat kwade mensen geen MySql injections kunnen uitvoeren.
+        $voornaam = $mysqli->escape_string($_POST['voornaam']);
+        $achternaam = $mysqli->escape_string($_POST['achternaam']);
+        $email = $mysqli->escape_string($_POST['emailnaam']);
+        $wachtwoord = $mysqli->escape_string($_POST['wachtwoord']);
         
         
-        //REGISTER METHODS!
         //CREATE private hash
         //hash password
         //STORE
@@ -65,11 +77,9 @@
     <div class="venster">
         <div class="container">
             <div class="loginform">
-                 <!--<div class="testbox">
-                </div>-->
-                <form action="login.php" method="post">
-                    <h2>Login</h2>
-                    <hr>
+                <form action="register.php" method="post">
+                    <h2 id="header">Registreer</h2>
+                    
                     <h4>Voornaam</h4>
                     <input type="text" required id="ftextbox" name="voornaam" placeholder="Voornaam...">
                     <br>
@@ -80,10 +90,13 @@
                     <input type="email" required id="ftextbox" name="email" placeholder="Email...">
                     <br>
                     <h4>Wachtwoord</h4>
-                    <input type="wachtwoord" required id="ftextbox" name="wachtwoord" placeholder="Wachtwoord...">
+                    <input type="password" required id="ftextbox" name="wachtwoord" placeholder="Wachtwoord...">
                     <br>
                     <br>
                     <button type="submit" id="fbutton" name="registeer"><span>Registreer</span></button>
+                    <br>
+                    <br>
+                    <p style="width: 30em;text-align: center;"><a style="color: green; width: 30em;" href="login.php">Al een account? Klik hier om in te loggen.</a></p>
                 </form>
             </div>
         </div>

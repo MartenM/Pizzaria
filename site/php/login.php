@@ -65,7 +65,7 @@
                 </div>-->
                 <form action="login.php" method="post">
                     <h2>Login</h2>
-                    <hr>
+                    
                     <h4>Email</h4>
                     <input type="email" required id="ftextbox" name="email" placeholder="Email...">
                     <p></p>
@@ -74,6 +74,9 @@
                     <br>
                     <br>
                     <button type="submit" id="fbutton" name="registeer"><span>Login</span></button>
+                    <br>
+                    <br>
+                    <p style="width: 30em;text-align: center;"><a style="color: green; width: 30em;" href="register.php">Nog geen account? Klik hier om te registreren.</a></p>
                 </form>
             </div>
         </div>
