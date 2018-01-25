@@ -9,5 +9,5 @@ $password = 'root';
 $database = 'pizzaria';
 
 /* Maak een connectie en open deze. Bij een error stop het php script. */
-$mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
+$mysqli = new mysqli($adress,$username,$password,$database) or die($mysqli->error);
 ?>

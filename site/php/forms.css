@@ -1,3 +1,7 @@
+.green-bg {
+    background-color: #5cb85c !important;
+}
+
 .venster{
     padding-top: 10em;
     height: 80%;
@@ -15,6 +19,27 @@
     border: 0.05em solid #efefef;
     border-radius: 1em;
     box-shadow: 0px 0px 16px black;
+}
+
+.errorbox {
+    padding: 1em;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 32em;
+    
+    display: table;
+    
+    color: #9e1c1c;
+    font-weight: bold;
+    
+    background-color: #ffaaaa;
+    border: 0.1em solid #ff7272;
+    border-radius: 1em;
+    box-shadow: 0px 0px 16px #ff6060;
+    
+    margin-bottom: 1em;
 }
 
 .loginform form {
@@ -41,5 +66,12 @@
 
 #fbutton span {
     font-size: 1.5em;
+}
+
+.inactief{
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 

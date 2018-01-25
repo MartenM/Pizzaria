@@ -1,5 +1,5 @@
 body {
-    font-family: "Arial Black";
+    font-family: 'Roboto', "Arial Black", sans-serif;
 }
 
 .navbar {
@@ -78,7 +78,7 @@ body {
     text-shadow: 2px 2px 8px black;
     font-size: 35px;
     color: #44aa49;
-    font-family: "Arial Black";
+    font-family: "Arial Black", 'Roboto', sans-serif;;
 }
 
 .jumbotron a:hover {

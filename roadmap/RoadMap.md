@@ -5,6 +5,9 @@ Pagina die de gebruiker ziet.
 Pagina waarop ingelogd kan worden.
 ## register.php
 Pagina waar nieuwe gebruikers zich kunnen registeren.
+## profiel.php
+Pagina waar gebruiker zijn profiel en bestellingen kan bekijken.
+Daarnaast bevat de pagina een knop om bestellingen op te nemen. Tenzij de gebruiker gebant is. Dat is deze button gelockt en werkt deze niet meer.
 ## bestellingen.php
 Pagina waar gebruikers bestellingen kunnen doen.
 
