@@ -89,9 +89,13 @@
     <!-- Charset -->
     <meta charset="utf-8">
     
-    <link rel="stylesheet" href="..\theme.css">
-    <link rel="stylesheet" href="..\animate.css">
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../animate.css">
     <link rel="stylesheet" href="forms.css">
+    
+    <!-- Deze paar regels zorgen voor de icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../resources/fav-icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/fav-icons/favicon-16x16.png">  
     
     <!-- Latest compiled and minified CSS van boostrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
