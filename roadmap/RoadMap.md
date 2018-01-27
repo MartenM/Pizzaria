@@ -22,7 +22,7 @@ Pagina waar gebruikers bestellingen kunnen doen.
 | hash		 	| VARCHAR(32)	| Unique hash voor van de klant						|
 | voornaam 		| VARCHAR(64) 	| Voornaam van de klant								|
 | achternaam 	| VARCHAR(64) 	| Achternaam van de klant 							|
-| registratie 	| DATETIME	 	| Registratie datum									|
+| registratie 	| TIMESTAMP	 	| Registratie datum									|
 | email		 	| VARCHAR(100) 	| Email van de klant	 							|
 | wachtwoord 	| VARCHAR(100) 	| Wachtwoord van de klant (hashed)					|
 | bestellingen	| INT	 		| Aantal bestellingen dat de klant heeft gemaakt 	|
@@ -47,3 +47,4 @@ Pagina waar gebruikers bestellingen kunnen doen.
 | afhalen		| BOOLEAN	 	| Als de klant de pizzas wil afhalen				|
 | adres			| VARCHAR(255)  | Adres van de klant als hij het wil afhalen		|
 | totaalprijs   | DECIMAL       | Totale prijs van de bestelling                    |
+| datum   | TIMESTAMP       | De preciese datum op wanneer de bestelling gemaakt werd                    |
