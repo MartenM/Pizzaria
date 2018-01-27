@@ -19,6 +19,7 @@ CREATE TABLE `martenmt_pizza`.`bestellingen`
     `bestelling` TEXT NOT NULL ,
     `afhalen` BOOLEAN NOT NULL ,
     `adres` VARCHAR(255) NOT NULL ,
-    `totaalprijs` DECIMAL(19, 4) NOT NULL ,
+    `totaalprijs` DECIMAL(19, 2) NOT NULL ,
     `datum` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ,
+    `afgehandeld` BOOLEAN NOT NULL,
     PRIMARY KEY (`id`));
