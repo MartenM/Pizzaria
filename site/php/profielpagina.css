@@ -108,6 +108,10 @@ th {
     font-weight: bold;
 }
 
+.hide {
+    display: none;
+}
+
 td {
     padding: 1em !important;
     border: 1px solid #CCC;

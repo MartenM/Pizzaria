@@ -94,7 +94,7 @@
 
                 <div class="geschiedenis">
                     <h3>Geschiedenis</h3>
-                    <div class="scroll">
+                    <div class="scroll <?php if($geschiedenis->num_rows == 0) echo "hide"; ?> ">
                         <table>
                             <tr>
                                 <th>Bestelling</th>
