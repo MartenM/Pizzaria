@@ -94,6 +94,8 @@
 
                 <div class="geschiedenis">
                     <h3>Geschiedenis</h3>
+                    <?php if($geschiedenis->num_rows == 0) echo "<span style='color: green'>U heeft nog geen bestellingen geplaats.</span>"; ?>
+                    
                     <div class="scroll <?php if($geschiedenis->num_rows == 0) echo "hide"; ?> ">
                         <table>
                             <tr>
@@ -107,7 +109,8 @@
                             <?php
                             
                                 if($geschiedenis->num_rows == 0){
-                                echo "<span style='color: green'>U heeft nog geen bestellingen geplaats.</span>";
+                                    // Origneel gebruik voor een bericht. Nu niet langer meer.
+                                    // Misschien nog voor later gebruik.
                                 } else {
                             
                                     while($rij = $geschiedenis->fetch_assoc()) {
