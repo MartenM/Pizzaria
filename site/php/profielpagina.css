@@ -1,0 +1,31 @@
+body {
+    background-color: black;
+}
+
+.venster{
+    padding-top: 8em;
+}
+
+h2 {
+    margin: 0 !important;
+}
+
+.profiel {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    border: 0.15em solid #c9c9c9;
+    box-shadow: 0px 0px 32px #efefef;
+    border-radius: 1em;
+}
+
+.stats {
+    padding: 1em;
+    border-top: 0.1em solid gray;
+    border-bottom: 0.1em solid gray;
+}
+
+.key {
+    font-family: 'Roboto', "Arial Black", sans-serif;
+    font-weight: bold;
+}

@@ -84,7 +84,7 @@
 <html lang="en">
 <head>
     <!-- De titel van de website -->
-    <title>DRL Pizza | Register</title>
+    <title>DRL Pizza | Registratie</title>
     
     <!-- Charset -->
     <meta charset="utf-8">
@@ -138,7 +138,6 @@
             
             <div class="loginform">
                 <form action="register.php" method="post">
-                    
                     <!-- Dit is een redelijk normaal PHP form dat wanneer het form verstuurd word opgestuurd zal worden in de POST methode.
                          Om er voor te zorgen dat de values hetzelfde blijven bij een error zit er ook wat PHP code in verwerkt dat de values naar de corrosponderende POST values zet. -->
                     
