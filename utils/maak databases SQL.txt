@@ -3,7 +3,7 @@ CREATE TABLE `pizzaria`.`klanten` (
     `hash` VARCHAR(32) NOT NULL , 
     `voornaam` VARCHAR(64) NOT NULL , 
     `achternaam` VARCHAR(64) NOT NULL , 
-    `registratie` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+    `registratie` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
     `email` VARCHAR(100) NOT NULL , 
     `wachtwoord` VARCHAR(100) NOT NULL , 
     `bestellingen` INT NOT NULL , 
