@@ -3,5 +3,7 @@
     session_unset();
     session_destroy();
     
-    header("Location ..\index.html");
+    echo("<!-- Succesvol uitgelogd -->");
+
+    header("Location: ..\index.html");
 ?>
