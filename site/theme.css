@@ -4,12 +4,12 @@ body {
 
 .navbar {
     border-radius: 0 !important;
-    
+
     position: fixed !important;
     width: 100%;
-    
+
     z-index: 100;
-    
+
     background-color: #51aa4c;
     margin-bottom: 0 !important;
 }
@@ -63,7 +63,7 @@ body {
 .jumbotron h1 {
     text-shadow: 2px 2px 8px black;
     color: wheat !important;
-    font-size: 48px;  
+    font-size: 48px;
     font-family: 'Shift', sans-serif;
     font-weight: bold;
 }
@@ -109,6 +109,11 @@ body {
     font-size: 2em;
 }
 
+.pizzainfo p{
+    font-weight: bold;
+    text-align: center;
+}
+
 .holder{
     max-width: 95%;
     background-image: url(resources/img/pizzabackground.png);
@@ -120,14 +125,13 @@ body {
     padding-right: 1em;
     border: 5px solid #51aa4c;
 }
-
 .pizzainfo img{
     max-width: 100%;
 }
 
 .locatie{
     background-color: #d8ffd9;
-    
+
     padding-top: 2em;
     padding-bottom: 2em;
     border-top: 1em solid #51aa4c;
