@@ -10,22 +10,113 @@ h2 {
     margin: 0 !important;
 }
 
+h3 {
+    margin: 0 !important;
+}
+
+.naam span {
+    font-size: 1.5em;
+    margin-top: 1em;
+}
+
+.naam .id {
+    font-size: 1em;
+    margin-top: 1em;
+    color: gray;
+}
+
 .profiel {
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 0.5em;
     border: 0.15em solid #c9c9c9;
-    box-shadow: 0px 0px 32px #efefef;
+    box-shadow: 0px 0px 16px gray;
     border-radius: 1em;
+    margin-bottom: 2em;
 }
 
 .stats {
+    float: left;
     padding: 1em;
+    width: 50%;
+}
+
+.bestel {
+    padding: 1.5em;
+    height: 100%;
+    float: right;
+    width: 50%;
+}
+
+#fbutton {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    font-weight: bold;
+    padding: 1em;
+    color: white;
+    background-color: #3b9435;
+    border: 0.2em solid #51aa4c;
+    border-radius: 1em;
+    padding: 1em;
+    width: 25em !important;
+}
+
+.menu {
     border-top: 0.1em solid gray;
     border-bottom: 0.1em solid gray;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .key {
     font-family: 'Roboto', "Arial Black", sans-serif;
     font-weight: bold;
+}
+
+.geschiedenis {
+    padding: 1em;
+}
+
+.scroll {
+    max-height: 45em;
+    overflow-y: scroll;
+}
+
+table {
+    margin-top: 1.5em;
+    width: 100%;
+}
+
+th {
+    background: #51aa4c;
+    color: white;
+    padding: 1em !important; 
+    border: 1px solid #CCC;
+}
+
+.ja {
+    color: green;
+}
+
+.nee {
+    color: red;
+    font-weight: bold;
+}
+
+td {
+    padding: 1em !important;
+    border: 1px solid #CCC;
+}
+
+tr:nth-child(odd) td { 
+    background: #FEFEFE; 
+}
+
+tr:nth-child(even) td { 
+    background: #efeded;
 }
