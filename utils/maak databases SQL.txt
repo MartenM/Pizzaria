@@ -12,3 +12,13 @@ CREATE TABLE `pizzaria`.`klanten` (
     `banned` BOOLEAN NOT NULL , 
     PRIMARY KEY (`id`), 
     UNIQUE (`email`));
+    
+CREATE TABLE `martenmt_pizza`.`bestellingen` 
+    ( `id` INT NULL ,
+    `klant` INT NOT NULL ,
+    `bestelling` TEXT NOT NULL ,
+    `afhalen` BOOLEAN NOT NULL ,
+    `adres` VARCHAR(255) NOT NULL ,
+    `totaalprijs` DECIMAL NOT NULL ,
+    `datum` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ,
+    PRIMARY KEY (`id`));
