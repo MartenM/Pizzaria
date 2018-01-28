@@ -85,9 +85,9 @@
                 <div class="menu clearfix">
                     <div class="stats">
                         <ul>
-                            <li><img src="https://cdn4.iconfinder.com/data/icons/pictograms-1/512/Calendar-512.png" style="height: 16px; width: 16px"> <span class="key">Geregistreerd op:</span> <span class="value"><?php echo $_SESSION['registratie'];?></span></li>
-                            <li><img src="https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/da79ef76-eb92-48ba-a360-dd4dd1519b03/icon/30162724-ed8b-4a46-93ca-37c4d4ab8d45" style="height: 16px; width: 16px"> <span class="key">Aantal bestellingen:</span> <span class="value"><?php echo $_SESSION['bestellingen'];?></span></li>
-                            <li><img src="http://www.iconarchive.com/download/i99744/sonya/swarm/Pizza.ico" style="height: 16px; width: 16px"> <span class="key">Spaarpunten:</span> <span class="value"><?php echo $_SESSION['spaarpunten'];?></span></li>
+                            <li><img src="../resources/icons/kalender.png" style="height: 16px; width: 16px"> <span class="key">Geregistreerd op:</span> <span class="value"><?php echo $_SESSION['registratie'];?></span></li>
+                            <li><img src="../resources/icons/aantal.png" style="height: 16px; width: 16px"> <span class="key">Aantal bestellingen:</span> <span class="value"><?php echo $_SESSION['bestellingen'];?></span></li>
+                            <li><img src="../resources/icons/pizza.png" style="height: 16px; width: 16px"> <span class="key">Spaarpunten:</span> <span class="value"><?php echo $_SESSION['spaarpunten'];?></span></li>
                         </ul>
                     </div>
                     <div class="bestel">
