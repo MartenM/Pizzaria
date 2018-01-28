@@ -23,3 +23,11 @@ CREATE TABLE `martenmt_pizza`.`bestellingen`
     `datum` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ,
     `afgehandeld` BOOLEAN NOT NULL,
     PRIMARY KEY (`id`));
+
+CREATE TABLE `martenmt_pizza`.`pizzas` ( 
+    `id` INT NOT NULL , 
+    `naam` VARCHAR(64) NOT NULL , 
+    `prijs` DECIMAL(16,2) NOT NULL , 
+    `voorraad` INT NOT NULL , 
+    `img` VARCHAR(255) NOT NULL , 
+    PRIMARY KEY (`id`));

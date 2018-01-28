@@ -1,0 +1,25 @@
+.venster{
+    padding-top: 8em;
+}
+
+h2 {
+    margin: 0 !important;
+}
+
+h3 {
+    margin: 0 !important;
+}
+
+.bestellen {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    border: 0.15em solid #c9c9c9;
+    box-shadow: 0px 0px 16px gray;
+    border-radius: 1em;
+    margin-bottom: 2em;
+}
+
+.bestelvenster {
+    padding: 2em;
+}
