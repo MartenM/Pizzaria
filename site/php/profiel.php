@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    require 'checklogin.php';
+
     $error_msg = '';
 
     $notify_msg = '';
