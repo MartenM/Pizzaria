@@ -29,6 +29,10 @@
 
     <!-- Import van de Roboto font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    
+    <!-- Deze paar regels zorgen voor de fav icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../resources/fav-icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/fav-icons/favicon-16x16.png">
 
     <!-- Latest compiled and minified CSS van boostrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -66,7 +70,7 @@
         <div class="container">
 
             <div class="msg_box">
-
+                
             </div>
 
             <div class="profiel">
@@ -124,7 +128,7 @@
                                         }
                                         
                                         echo "<td>" . $rij['adres'] . "</td>";
-                                        echo "<td>" . $rij['totaalprijs'] . "</td>";
+                                        echo "<td>€ " . $rij['totaalprijs'] . "</td>";
                                         echo "<td>" . $rij['datum'] . "</td>";
 
                                         if($rij['afgehandeld'] == '0'){
@@ -140,7 +144,6 @@
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

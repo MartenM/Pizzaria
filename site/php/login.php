@@ -117,7 +117,7 @@
             
             <div class="loginform">
                 <form action="login.php" method="post">
-                    <h2>Login</h2>s
+                    <h2>Login</h2>
                     
                     <h4>Email</h4>
                     <!-- Deze textbox heeft een PHP om de session email direct in te vullen. Vooral handig voor direct na de registratie. -->

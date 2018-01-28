@@ -25,7 +25,7 @@ Pagina waar gebruikers bestellingen kunnen doen.
 | registratie 	| TIMESTAMP	 	| Registratie datum									|
 | email		 	| VARCHAR(100) 	| Email van de klant	 							|
 | wachtwoord 	| VARCHAR(100) 	| Wachtwoord van de klant (hashed)					|
-| bestellingen	| INT	 		| Aantal bestellingen dat de klant heeft gemaakt 	|
+| bestellingen	| INT	 		| Aantal bestellingen die de klant heeft gemaakt 	|
 | spaarputen	| INT			| Aantal spaarputen dat de klant heeft verzameld	|
 | actief		| BOOLEAN		| Geeft aan of de zijn account heeft geactiveerd	|
 | banned		| BOOLEAN		| Geeft aan of de gebruiker gebant is				|
