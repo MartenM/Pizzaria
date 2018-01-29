@@ -55,7 +55,8 @@ h3 {
     border: 0.2em solid #51aa4c;
     border-radius: 1em;
     padding: 1em;
-    width: 25em !important;
+    width: 100% !important;
+    max-width: 25em;
 }
 
 .menu {
