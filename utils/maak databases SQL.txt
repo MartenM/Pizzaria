@@ -27,6 +27,7 @@ CREATE TABLE `martenmt_pizza`.`bestellingen`
 CREATE TABLE `martenmt_pizza`.`pizzas` ( 
     `id` INT NOT NULL , 
     `naam` VARCHAR(64) NOT NULL , 
+    `beschrijving` TEXT NOT NULL , 
     `prijs` DECIMAL(16,2) NOT NULL , 
     `voorraad` INT NOT NULL , 
     `img` VARCHAR(255) NOT NULL , 

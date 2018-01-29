@@ -133,12 +133,15 @@
                                         echo "<td>€ " . $rij['totaalprijs'] . "</td>";
                                         echo "<td>" . $rij['datum'] . "</td>";
 
-                                        if($rij['afgehandeld'] == '0'){
+                                        if($rij['status'] == 'OPEN'){
                                             echo "<td>" . "<span class='nee'>Nee</span>" . "</td>";
-                                        } else{
+                                        } else if($rij['status'] == 'GESLOTEN'){
                                             echo "<td>" . "<span class='ja'>Ja</span>" . "</td>";
                                         }
-                                
+                                        else{
+                                            echo "<td>" . "<span class='cancelled'>Cancelled</span>" . "</td>";
+                                        }
+                                        
                                         echo '</tr>';
                                     }
                                 }

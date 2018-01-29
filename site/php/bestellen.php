@@ -78,11 +78,36 @@
                 
                 <div class="bestelvenster">
                     <form action="bestellen.php" method="post">
-                        <?php 
-                            while($rij = $pizzas->fetch_assoc()) {
-                                echo $rij['naam'] . " " . rij['prijs']; 
-                            }
-                        ?>
+                        <table>
+                            <tr>
+                                <th>Pizza naam</th>
+                                <th>Beschrijving</th>
+                                <th>Prijs</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            
+                            <?php 
+                                while($rij = $pizzas->fetch_assoc()) {
+                                    echo "<tr>";
+                                        
+                                    echo "<td>" . $rij['naam'] . "</td>";
+                                    echo "<td>" . $rij['beschrijving'] . "</td>";
+                                    echo "<td>" . $rij['prijs'] . "</td>";
+                                    echo "<td>" . "<img style='height: 6vw; width: 6vw;' src='" . $rij['img'] . "'></td>";
+                                        
+                                    if($rij['voorraad'] > 0){
+                                        echo "<td style='text-align: center;'>" . "Aantal: <input class='numeric' type='number' value='0'></td>";
+                                    } else{
+                                        echo "<td>" . "<img style='height: 3vw; width: 6vw;' src=../resources/img/uitverkocht.png>" . "</td>";
+                                    }
+                                        
+                                        
+                                        
+                                    echo "</tr>";
+                                    }
+                                ?>
+                        </table>
                     </form>
                 </div>
                 

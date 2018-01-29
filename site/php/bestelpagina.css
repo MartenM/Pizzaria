@@ -10,10 +10,14 @@ h3 {
     margin: 0 !important;
 }
 
+h4 {
+    margin: 0 !important;
+}
+
 .bestellen {
     padding-left: 1em;
     padding-right: 1em;
-    padding-top: 0.5em;
+    padding-top: 1em;
     border: 0.15em solid #c9c9c9;
     box-shadow: 0px 0px 16px gray;
     border-radius: 1em;
@@ -22,4 +26,41 @@ h3 {
 
 .bestelvenster {
     padding: 2em;
+}
+
+table {
+    margin-top: 1.5em;
+    width: 100%;
+}
+
+th {
+    font-size: 1.2em;
+    background: #51aa4c;
+    color: white;
+    padding: 1em !important; 
+    border: 1px solid #CCC;
+}
+
+td {
+    font-size: 1.5em;
+    padding: 1em !important;
+    border: 1px solid #CCC;
+}
+
+td img {
+    display:block;
+    margin:auto;
+}
+
+tr:nth-child(odd) td { 
+    background: #FEFEFE; 
+}
+
+tr:nth-child(even) td { 
+    background: #efeded;
+}
+
+.numeric {
+    width: 3em;
+    text-align: center;
 }

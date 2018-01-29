@@ -105,6 +105,10 @@ th {
     font-weight: bold;
 }
 
+.cancelled {
+    color: orange;
+}
+
 .hide {
     display: none;
 }

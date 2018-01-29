@@ -35,6 +35,7 @@ Pagina waar gebruikers bestellingen kunnen doen.
 |---		 	| --- 			| --- |
 | id		 	| INT			| Id van de pizza									|
 | naam	 		| VARCHAR(64) 	| Naam van de pizza									|
+| beschrijving	| TEXT         	| Beschrijving van de pizza (ingrediënten)			|
 | prijs		 	| DECIMAL	 	| Prijs van de pizza	 							|
 | voorraad	 	| INT		 	| Aantal pizzas in de voorraad						|
 | img		 	| VARCHAR(255)	| Plaatje van de pizza	 							|
