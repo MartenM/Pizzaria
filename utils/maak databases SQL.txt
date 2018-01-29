@@ -21,7 +21,7 @@ CREATE TABLE `martenmt_pizza`.`bestellingen`
     `adres` VARCHAR(255) NOT NULL ,
     `totaalprijs` DECIMAL(19, 2) NOT NULL ,
     `datum` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ,
-    `afgehandeld` BOOLEAN NOT NULL,
+    `status` VARCHAR(64) NOT NULL DEFAULT 'OPEN',
     PRIMARY KEY (`id`));
 
 CREATE TABLE `martenmt_pizza`.`pizzas` ( 

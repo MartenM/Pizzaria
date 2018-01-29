@@ -49,3 +49,4 @@ Pagina waar gebruikers bestellingen kunnen doen.
 | adres			| VARCHAR(255)  | Adres van de klant als hij het wil afhalen		|
 | totaalprijs   | DECIMAL       | Totale prijs van de bestelling                    |
 | datum         | TIMESTAMP     | De preciese datum op wanneer de bestelling gemaakt werd |
+| status        | VARCHAR(64)   | De actuele status van de bestelling (OPEN / GESLOTEN / CANCELLED |
