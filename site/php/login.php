@@ -127,7 +127,7 @@
                     <input type="password" required id="ftextbox" name="wachtwoord" placeholder="Wachtwoord...">
                     <br>
                     <br>
-                    <button type="submit" id="fbutton" name="registeer"><span>Login</span></button>
+                    <button type="submit" id="fbutton" name="login"><span>Login</span></button>
                     <br>
                     <br>
                     <p style="width: 30em;text-align: center;"><a style="color: green; width: 30em;" href="register.php">Nog geen account? Klik hier om te registreren.</a></p>

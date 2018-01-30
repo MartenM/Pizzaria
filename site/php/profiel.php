@@ -5,7 +5,12 @@
 
     $error_msg = '';
 
-    $notify_msg = '';
+    // Hier worden messages gepakt en gereset wanneer nodig.
+    $notice_msg = empty($_SESSION['msg_notice']) ? '' : $_SESSION['msg_notice']; 
+    $_SESSION['msg_notice'] = '';
+    
+    $succes_msg = empty($_SESSION['msg_succes']) ? '' : $_SESSION['msg_succes']; 
+    $_SESSION['msg_succes'] = '';
 
     // Laad het database php script.
     $mysqli = '';
@@ -71,8 +76,12 @@
     <div class="venster">
         <div class="container">
 
-            <div class="msg_box">
-                
+            <div class="succes-box <?php if($succes_msg == '') echo 'hide'; ?>">
+                <span><?php echo $succes_msg;?></span>
+            </div>
+            
+            <div class="notice-box <?php if($notice_msg == '') echo 'hide'; ?>">
+                <span><?php echo $notice_msg;?></span>
             </div>
 
             <div class="profiel">
