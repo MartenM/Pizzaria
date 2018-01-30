@@ -60,7 +60,7 @@
         }
         
         if(!$error){
-            if(!empty($_POST['afhalen'])){
+            if($_POST['bezorgen'] == "Nee"){
                 // Gebruiker gaat de pizzas afhalen vanaf het filiaal.
                 // Korting van 5% toerekenen!
                 $korting = ($totaalprijs * 0.05);
@@ -189,7 +189,7 @@
                             <div class="links"> 
                                 <h3>Wilt u de pizza laten bezorgen?</h3>
                                 <div class="radiobuttons">
-                                    <input type="radio" onclick="updateBezorgen(false)" name="afhalen" value="Nee" checked="checked" > Nee
+                                    <input type="radio" onclick="updateBezorgen(false)" name="bezorgen" value="Nee" checked> Nee
                                     <input type="radio" onclick="updateBezorgen(true)" name="bezorgen" value="Ja"> Ja
                                 </div>
                                 
