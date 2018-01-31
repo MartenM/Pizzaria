@@ -5,7 +5,12 @@
 
     $error_msg = '';
 
-    $notify_msg = '';
+    // Hier worden messages gepakt en gereset wanneer nodig.
+    $notice_msg = empty($_SESSION['msg_notice']) ? '' : $_SESSION['msg_notice']; 
+    $_SESSION['msg_notice'] = '';
+    
+    $succes_msg = empty($_SESSION['msg_succes']) ? '' : $_SESSION['msg_succes']; 
+    $_SESSION['msg_succes'] = '';
 
     // Laad het database php script.
     $mysqli = '';
@@ -71,8 +76,12 @@
     <div class="venster">
         <div class="container">
 
-            <div class="msg_box">
-                
+            <div class="succes-box <?php if($succes_msg == '') echo 'hide'; ?>">
+                <span><?php echo $succes_msg;?></span>
+            </div>
+            
+            <div class="notice-box <?php if($notice_msg == '') echo 'hide'; ?>">
+                <span><?php echo $notice_msg;?></span>
             </div>
 
             <div class="profiel">
@@ -133,12 +142,15 @@
                                         echo "<td>€ " . $rij['totaalprijs'] . "</td>";
                                         echo "<td>" . $rij['datum'] . "</td>";
 
-                                        if($rij['afgehandeld'] == '0'){
+                                        if($rij['status'] == 'OPEN'){
                                             echo "<td>" . "<span class='nee'>Nee</span>" . "</td>";
-                                        } else{
+                                        } else if($rij['status'] == 'GESLOTEN'){
                                             echo "<td>" . "<span class='ja'>Ja</span>" . "</td>";
                                         }
-                                
+                                        else{
+                                            echo "<td>" . "<span class='cancelled'>Cancelled</span>" . "</td>";
+                                        }
+                                        
                                         echo '</tr>';
                                     }
                                 }

@@ -35,6 +35,7 @@ Pagina waar gebruikers bestellingen kunnen doen.
 |---		 	| --- 			| --- |
 | id		 	| INT			| Id van de pizza									|
 | naam	 		| VARCHAR(64) 	| Naam van de pizza									|
+| beschrijving	| TEXT         	| Beschrijving van de pizza (ingrediënten)			|
 | prijs		 	| DECIMAL	 	| Prijs van de pizza	 							|
 | voorraad	 	| INT		 	| Aantal pizzas in de voorraad						|
 | img		 	| VARCHAR(255)	| Plaatje van de pizza	 							|
@@ -49,3 +50,4 @@ Pagina waar gebruikers bestellingen kunnen doen.
 | adres			| VARCHAR(255)  | Adres van de klant als hij het wil afhalen		|
 | totaalprijs   | DECIMAL       | Totale prijs van de bestelling                    |
 | datum         | TIMESTAMP     | De preciese datum op wanneer de bestelling gemaakt werd |
+| status        | VARCHAR(64)   | De actuele status van de bestelling (OPEN / GESLOTEN / CANCELLED |
