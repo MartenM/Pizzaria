@@ -11,6 +11,7 @@ Public Class DrlDatabase
     Public Function grabConnection() As MySqlConnection
         Dim connection As New MySqlConnection
 
+        Debug.WriteLine($"server={adres}; userid={username}; password={wachtwoord}; database={database}")
         connection.ConnectionString = $"server={adres}; userid={username}; password={wachtwoord}; database={database}"
 
         Return connection
