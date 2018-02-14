@@ -12,7 +12,7 @@
       <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="db_database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">pizzaria</Value>
+      <Value Profile="(Default)">martenmt_pizza</Value>
     </Setting>
   </Settings>
 </SettingsFile>

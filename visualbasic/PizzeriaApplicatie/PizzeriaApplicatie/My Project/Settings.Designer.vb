@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("pizzaria")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("martenmt_pizza")>  _
         Public Property db_database() As String
             Get
                 Return CType(Me("db_database"),String)
