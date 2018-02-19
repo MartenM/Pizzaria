@@ -25,10 +25,6 @@
         $error = false;
         $korting = 0.00;
         
-        $p_naam = array();
-        $p_prijs = array();
-        $p_aantal = array();
-        
         $lijst = array();
         
         while($rij = $pizzas->fetch_assoc()) {
@@ -65,6 +61,11 @@
                 }
             }
         }
+		
+		if($bestelling = '' || count($lijst) == 0){
+			$error = true;
+            $error_msg = "Ongeldige bestelling.";
+		}
         
         if(!$error){
             $adres = 'N.V.T.';
