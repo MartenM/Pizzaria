@@ -3,6 +3,7 @@
 Public Class Form1
     Dim tijd As Integer = 120
     Dim database As DrlDatabase
+    Dim huidig_id As Integer
 
     Public Sub updateDataGridView(ByVal query As String)
         label_tijd.Text = "Query word uitgevoerd: " + query
@@ -52,5 +53,48 @@ Public Class Form1
                 label_tijd.ForeColor = Color.Orange
             End If
         End If
+    End Sub
+
+    Private Sub BT_Afhandelen_Click(sender As Object, e As EventArgs) Handles BT_Afhandelen.Click
+        Dim connection As MySqlConnection = database.grabConnection()
+        Try
+            connection.Open()
+            Dim command As MySqlCommand = connection.CreateCommand()
+            command.CommandText = "UPDATE bestellingen SET status='GESLOTEN' WHERE id = " + huidig_id
+            command.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MsgBox("error")
+        End Try
+    End Sub
+
+    Private Sub BT_Cancel_Click(sender As Object, e As EventArgs) Handles BT_Cancel.Click
+        Dim connection As MySqlConnection = database.grabConnection()
+        Try
+            connection.Open()
+            Dim command As MySqlCommand = connection.CreateCommand()
+            command.CommandText = "UPDATE bestellingen SET status='CANCELLED' WHERE id = " + huidig_id
+            command.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MsgBox("error")
+        End Try
+    End Sub
+
+    Private Sub BT_Opslaan_Click(sender As Object, e As EventArgs) Handles BT_Opslaan.Click
+        Dim connection As MySqlConnection = database.grabConnection()
+        Try
+            connection.Open()
+            Dim command As MySqlCommand = connection.CreateCommand()
+            command.CommandText = "UPDATE bestellingen SET adres=?, bestelling=? WHERE id = " + huidig_id
+            command.Parameters.AddWithValue("@adres", TB_Adres.Text)
+            command.Parameters.AddWithValue("@bestelling", TB_Bestelling.Text)
+            command.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MsgBox("error")
+        End Try
+
+
     End Sub
 End Class
