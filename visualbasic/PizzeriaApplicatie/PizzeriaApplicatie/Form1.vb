@@ -97,4 +97,21 @@ Public Class Form1
 
 
     End Sub
+
+    Private Sub BT_OpenBestellingen_Click(sender As Object, e As EventArgs) Handles BT_OpenBestellingen.Click
+        Dim connection As MySqlConnection = database.grabConnection()
+        Try
+            connection.Open()
+
+            Dim adapter As New MySqlDataAdapter("Select * from bestellingen where status = 'OPEN'", connection)
+            Dim dataset As New DataSet
+
+            adapter.Fill(dataset)
+
+            DataGridView1.DataSource = dataset.Tables(0)
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " + ex.ToString())
+        End Try
+    End Sub
 End Class
