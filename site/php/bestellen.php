@@ -8,6 +8,8 @@
     // Check of de gebruiker ingelogt is. Zo niet dan stop de php code hier en word de gebruiker doorgestuurd.
     require 'checklogin.php';
 
+    require 'pizzaObject.php';
+
     // Haal de database connectie op.
     $mysqli = '';
     require "db.php";
@@ -23,9 +25,7 @@
         $error = false;
         $korting = 0.00;
         
-        $p_naam = array();
-        $p_prijs = array();
-        $p_aantal = array();
+        $lijst = array();
         
         while($rij = $pizzas->fetch_assoc()) {
             
@@ -51,39 +51,65 @@
                     
                     $totaalprijs = $rij['prijs'] * intval($aantal);
                     $bestelling = $bestelling . $aantal . " " . $rij['naam'] . " ";
+                
+                    // Maak een pizza object en zet deze in de array.
+                    // Op deze manier kunnen we snel de bestelling doorgeven naar ander paginas.
+                    $object = new PizzaObject();
+                    $object->setVariablen($rij['naam'], $rij['prijs'], $aantal);
                     
-                    array_push($p_naam, $rij['naam']);
-                    array_push($p_aantal, $aantal);
-                    array_push($p_prijs, "€" . $rij['prijs'] * intval($aantal));
+                    array_push($lijst, $object);
                 }
             }
         }
+		
+		if($bestelling = '' || count($lijst) == 0){
+			$error = true;
+            $error_msg = "Ongeldige bestelling.";
+		}
         
         if(!$error){
+            $adres = 'N.V.T.';
+            $afhalen = false;
             if($_POST['bezorgen'] == "Nee"){
                 // Gebruiker gaat de pizzas afhalen vanaf het filiaal.
                 // Korting van 5% toerekenen!
-                $korting = ($totaalprijs * 0.05);
+                // Korting afronden op 2 decimalen.
+                $korting = round(($totaalprijs * 0.05), 2);
                 $totaalprijs = $totaalprijs - $korting;
+            } else {
+                $afhalen = true;
+                $adres = $_POST['straat'] . " " . $_POST['huisnummer'] . " " . $_POST['plaats'];
             }
             
-            // Hier maken we een map zodat we de data meer effecient kunnen gebruiken.
-            // Dit kan in dit project nog vaker gebruikt worden.
-            $data = array_map(null, $p_naam, $p_aantal, $p_prijs);
-            
             $_SESSION['msg_succes'] = "De bestelling is succesvol afgerond!<br><br>";
-            foreach($data as $key=>$val){            
-                foreach($val as $k=>$v){           
-                    $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . $v . " ";
-                }
-                $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<br>";
+            
+            foreach($lijst as $object){            
+                $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . " > " . $object->naam . " €" .  ($object->prijs * $object->aantal) . "<br>";
             }
             
             $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<br>Korting: €" . $korting . "<br>";
             $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "=============================";
             $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<br>Totaal: €" . $totaalprijs;
             
-            $_SESSION['msg_notice'] = "Bestellingen worden nog niet verwerkt!!";
+            // Gereed maken voor insert:
+            $bestelling = $mysqli->escape_string($bestelling);
+            
+            // Update de databases:
+            $sql_bestelling = "INSERT INTO bestellingen (klant, bestelling, afhalen, adres, totaalprijs) " 
+            . "VALUES (" . $_SESSION['id'] . ",'$bestelling','$afhalen','$adres', '$totaalprijs');";
+            
+            // Deze if statement retourneert true wanneer de querie succesvol is afgerond.
+            // Anders false.
+            if ($mysqli->query($sql_bestelling) ){
+                // Query heeft gewerkt. Schrijf de vooraad af.
+                foreach($lijst as $object){            
+                    $sql_pizzavooraad = "UPDATE pizzas SET voorraad= voorraad - " . $object->aantal . " where naam='$object->naam';";
+                    $mysqli->query($sql_pizzavooraad);
+                }
+            
+            } else {
+                $_SESSION['msg_notice'] = "Er is iets mis gegaan tijdens het bestellen. Geliefd het nog een keer te proberen.<br><br>" . $mysqli->error . "<br><br>" . $sql_bestelling;
+            }
             
             header("Location: profiel.php");   
             exit;
@@ -246,7 +272,5 @@
             </div>
         </div>
     </div>
-    
-    
 </body>
 </html>

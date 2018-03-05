@@ -97,6 +97,12 @@ body {
     padding-top: 1em;
 }
 
+.pizzainfo img{
+    display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .pizzainfo h2{
     text-align: center;
     font-weight: bold;
@@ -139,6 +145,7 @@ body {
 
 .locatie img{
     border-radius: 5em;
+	width: 100%;
 }
 
 .footer{
@@ -190,6 +197,7 @@ body {
   padding-left: 1em;
   padding-right: 1em;
   border: 5px solid #51aa4c;
+  margin-top: 1em;
 }
 
 .rNaam {
@@ -257,7 +265,7 @@ body {
     
     display: table;
     
-    color: #1cc110;
+    color: #148a0b;
     font-weight: bold;
     
     background-color: #c5ffc1;
