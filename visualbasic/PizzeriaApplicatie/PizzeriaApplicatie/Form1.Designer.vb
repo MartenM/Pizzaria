@@ -48,11 +48,12 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.label_tijd = New System.Windows.Forms.Label()
         Me.Label_UpdateIn = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DGV_Main = New System.Windows.Forms.DataGridView()
         Me.UpdateTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OptiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OverToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label_StatusUpdate = New System.Windows.Forms.Label()
         Me.sidePanel.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -60,7 +61,7 @@ Partial Class Form1
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGV_Main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -318,6 +319,7 @@ Partial Class Form1
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Label_StatusUpdate)
         Me.Panel3.Controls.Add(Me.label_tijd)
         Me.Panel3.Controls.Add(Me.Label_UpdateIn)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
@@ -345,18 +347,18 @@ Partial Class Form1
         Me.Label_UpdateIn.TabIndex = 0
         Me.Label_UpdateIn.Text = "Update in:"
         '
-        'DataGridView1
+        'DGV_Main
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(186, 114)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(507, 389)
-        Me.DataGridView1.TabIndex = 5
+        Me.DGV_Main.AllowUserToAddRows = False
+        Me.DGV_Main.AllowUserToDeleteRows = False
+        Me.DGV_Main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DGV_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV_Main.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGV_Main.Location = New System.Drawing.Point(186, 114)
+        Me.DGV_Main.Name = "DGV_Main"
+        Me.DGV_Main.ReadOnly = True
+        Me.DGV_Main.Size = New System.Drawing.Size(507, 389)
+        Me.DGV_Main.TabIndex = 5
         '
         'UpdateTimer
         '
@@ -384,12 +386,21 @@ Partial Class Form1
         Me.OverToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.OverToolStripMenuItem.Text = "Over"
         '
+        'Label_StatusUpdate
+        '
+        Me.Label_StatusUpdate.AutoSize = True
+        Me.Label_StatusUpdate.Location = New System.Drawing.Point(117, 7)
+        Me.Label_StatusUpdate.Name = "Label_StatusUpdate"
+        Me.Label_StatusUpdate.Size = New System.Drawing.Size(47, 13)
+        Me.Label_StatusUpdate.TabIndex = 2
+        Me.Label_StatusUpdate.Text = "<status>"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(892, 503)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DGV_Main)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.header)
@@ -410,7 +421,7 @@ Partial Class Form1
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGV_Main, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -436,7 +447,7 @@ Partial Class Form1
     Friend WithEvents Panel3 As Panel
     Friend WithEvents label_tijd As Label
     Friend WithEvents Label_UpdateIn As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGV_Main As DataGridView
     Friend WithEvents UpdateTimer As Timer
     Friend WithEvents Panel5 As Panel
     Friend WithEvents BT_OpenBestellingen As Button
@@ -447,4 +458,5 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents OptiesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OverToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label_StatusUpdate As Label
 End Class

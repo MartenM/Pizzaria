@@ -1,12 +1,14 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Threading
 
 Public Class Form1
     Dim tijd As Integer = 120
     Dim database As DrlDatabase
-    Dim huidig_id As Integer
+    Dim huidige_row As Integer
+    Dim huidige_id As Integer
 
     Public Sub updateDataGridView(ByVal query As String)
-        label_tijd.Text = "Query word uitgevoerd: " + query
+        label_tijd.Text = "Updaten van bestellingen... "
 
         Dim connection As MySqlConnection = database.grabConnection()
         Try
@@ -17,11 +19,30 @@ Public Class Form1
 
             adapter.Fill(dataset)
 
-            DataGridView1.DataSource = dataset.Tables(0)
+            DGV_Main.DataSource = dataset.Tables(0)
 
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.ToString())
+        Finally
+            connection.Close()
         End Try
+    End Sub
+
+    Public Sub setStatusLabel(ByVal message As String, ByVal color As Color)
+        Label_StatusUpdate.Text = message
+        Label_StatusUpdate.ForeColor = color
+
+        Dim thread As New Thread(AddressOf resetStatusLabel)
+        thread.Start()
+    End Sub
+
+    Private Sub resetStatusLabel()
+        Thread.Sleep(2000)
+        Me.Invoke(
+            Sub()
+                Label_StatusUpdate.Text = ""
+            End Sub
+        )
     End Sub
 
     Private Sub Label_UpdateIn_Click(sender As Object, e As EventArgs) Handles Label_UpdateIn.Click
@@ -36,13 +57,15 @@ Public Class Form1
         database.username = My.Settings.db_username
         database.wachtwoord = My.Settings.db_wachtwoord
         database.database = My.Settings.db_database
+
+        Label_StatusUpdate.Text = ""
     End Sub
 
     ' Functie die word uitgevoerd wanneer de timer 1000ms is verstreken.
     Private Sub UpdateTimer_Tick(sender As Object, e As EventArgs) Handles UpdateTimer.Tick
         If (tijd = 0) Then
             tijd = 120
-            updateDataGridView("select * from bestellingen")
+            updateDataGridView("SELECT bestellingen.id, bestelling, afhalen, adres, klanten.voornaam, klanten.achternaam, datum, status FROM `bestellingen` INNER JOIN klanten ON klanten.id = bestellingen.klant  where status = 'OPEN' ORDER BY datum ASC")
         Else
             tijd -= 1
             label_tijd.Text = tijd
@@ -60,11 +83,14 @@ Public Class Form1
         Try
             connection.Open()
             Dim command As MySqlCommand = connection.CreateCommand()
-            command.CommandText = "UPDATE bestellingen SET status='GESLOTEN' WHERE id = " + huidig_id
+            command.CommandText = "UPDATE bestellingen SET status='GESLOTEN' WHERE id = " + huidige_id.ToString()
             command.ExecuteNonQuery()
-
         Catch ex As Exception
-            MsgBox("error")
+            MsgBox("Onverwachte error: " + ex.Message)
+        Finally
+            connection.Close()
+            DGV_Main.Rows.Remove(DGV_Main.Rows(huidige_row))
+            setStatusLabel("Bestelling succesvol gesloten.", Color.Green)
         End Try
     End Sub
 
@@ -73,11 +99,15 @@ Public Class Form1
         Try
             connection.Open()
             Dim command As MySqlCommand = connection.CreateCommand()
-            command.CommandText = "UPDATE bestellingen SET status='CANCELLED' WHERE id = " + huidig_id
+            command.CommandText = "UPDATE bestellingen SET status='CANCELLED' WHERE id = " + huidige_id.ToString()
             command.ExecuteNonQuery()
 
         Catch ex As Exception
-            MsgBox("error")
+            MsgBox("Onverwachte error: " + ex.Message)
+        Finally
+            connection.Close()
+            DGV_Main.Rows.Remove(DGV_Main.Rows(huidige_row))
+            setStatusLabel("Bestelling succesvol gecancelled.", Color.Green)
         End Try
     End Sub
 
@@ -86,13 +116,16 @@ Public Class Form1
         Try
             connection.Open()
             Dim command As MySqlCommand = connection.CreateCommand()
-            command.CommandText = "UPDATE bestellingen SET adres=?, bestelling=? WHERE id = " + huidig_id
+            command.CommandText = "UPDATE bestellingen SET adres=?, bestelling=? WHERE id = " + huidige_id.ToString()
             command.Parameters.AddWithValue("@adres", TB_Adres.Text)
             command.Parameters.AddWithValue("@bestelling", TB_Bestelling.Text)
             command.ExecuteNonQuery()
 
         Catch ex As Exception
-            MsgBox("error")
+            MsgBox("Onverwachte error: " + ex.Message)
+        Finally
+            connection.Close()
+            setStatusLabel("Bestelling succesvol geüpdated", Color.Green)
         End Try
 
 
@@ -103,15 +136,25 @@ Public Class Form1
         Try
             connection.Open()
 
-            Dim adapter As New MySqlDataAdapter("Select * from bestellingen where status = 'OPEN'", connection)
+            Dim adapter As New MySqlDataAdapter("SELECT bestellingen.id, bestelling, afhalen, adres, klanten.voornaam, klanten.achternaam, datum, status FROM `bestellingen` INNER JOIN klanten ON klanten.id = bestellingen.klant  where status = 'OPEN' ORDER BY datum ASC", connection)
             Dim dataset As New DataSet
 
             adapter.Fill(dataset)
 
-            DataGridView1.DataSource = dataset.Tables(0)
+            DGV_Main.DataSource = dataset.Tables(0)
 
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.ToString())
+        Finally
+            connection.Close()
+            setStatusLabel("Open bestellingen geladen.", Color.Black)
         End Try
+    End Sub
+
+    Private Sub DataGridView1_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGV_Main.RowHeaderMouseClick
+        huidige_row = e.RowIndex
+        huidige_id = DGV_Main(0, e.RowIndex).Value
+        TB_Bestelling.Text = DGV_Main(1, e.RowIndex).Value
+        TB_Adres.Text = DGV_Main(3, e.RowIndex).Value
     End Sub
 End Class

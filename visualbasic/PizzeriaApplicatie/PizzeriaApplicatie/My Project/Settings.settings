@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="db_adres" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+      <Value Profile="(Default)">185.182.56.72</Value>
     </Setting>
     <Setting Name="db_username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">marteih203_pizza-user</Value>
     </Setting>
     <Setting Name="db_wachtwoord" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">DATZOUJEWELWILLENWETENHE</Value>
     </Setting>
     <Setting Name="db_database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">martenmt_pizza</Value>
+      <Value Profile="(Default)">marteih203_pizza</Value>
     </Setting>
   </Settings>
 </SettingsFile>
