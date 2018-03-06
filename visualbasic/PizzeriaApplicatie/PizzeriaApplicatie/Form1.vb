@@ -53,12 +53,14 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Hier zorgen we er voor dat het database object present is en dat alle gegevens er in worden geladen.
         database = New DrlDatabase
+        Label_StatusUpdate.Text = ""
+    End Sub
+
+    Private Sub laadDatabaseOpties()
         database.adres = My.Settings.db_adres
         database.username = My.Settings.db_username
         database.wachtwoord = My.Settings.db_wachtwoord
         database.database = My.Settings.db_database
-
-        Label_StatusUpdate.Text = ""
     End Sub
 
     ' Functie die word uitgevoerd wanneer de timer 1000ms is verstreken.
@@ -85,12 +87,13 @@ Public Class Form1
             Dim command As MySqlCommand = connection.CreateCommand()
             command.CommandText = "UPDATE bestellingen SET status='GESLOTEN' WHERE id = " + huidige_id.ToString()
             command.ExecuteNonQuery()
+            setStatusLabel("Bestelling succesvol afgehandelt", Color.Green)
         Catch ex As Exception
             MsgBox("Onverwachte error: " + ex.Message)
         Finally
-            connection.Close()
-            DGV_Main.Rows.Remove(DGV_Main.Rows(huidige_row))
-            setStatusLabel("Bestelling succesvol gesloten.", Color.Green)
+            If connection.State <> ConnectionState.Closed Then
+                connection.Close()
+            End If
         End Try
     End Sub
 
@@ -102,12 +105,13 @@ Public Class Form1
             command.CommandText = "UPDATE bestellingen SET status='CANCELLED' WHERE id = " + huidige_id.ToString()
             command.ExecuteNonQuery()
 
+            setStatusLabel("Bestelling succesvol gecancelled", Color.Green)
         Catch ex As Exception
             MsgBox("Onverwachte error: " + ex.Message)
         Finally
-            connection.Close()
-            DGV_Main.Rows.Remove(DGV_Main.Rows(huidige_row))
-            setStatusLabel("Bestelling succesvol gecancelled.", Color.Green)
+            If connection.State <> ConnectionState.Closed Then
+                connection.Close()
+            End If
         End Try
     End Sub
 
@@ -120,12 +124,13 @@ Public Class Form1
             command.Parameters.AddWithValue("@adres", TB_Adres.Text)
             command.Parameters.AddWithValue("@bestelling", TB_Bestelling.Text)
             command.ExecuteNonQuery()
-
+            setStatusLabel("Bestelling succesvol geüpdated", Color.Green)
         Catch ex As Exception
             MsgBox("Onverwachte error: " + ex.Message)
         Finally
-            connection.Close()
-            setStatusLabel("Bestelling succesvol geüpdated", Color.Green)
+            If connection.State <> ConnectionState.Closed Then
+                connection.Close()
+            End If
         End Try
 
 
@@ -168,6 +173,7 @@ Public Class Form1
             My.Settings.db_wachtwoord = dialog.TB_Wachtwoord.Text
             My.Settings.db_database = dialog.TB_Database.Text
             My.Settings.Save()
+            laadDatabaseOpties()
         End If
     End Sub
 End Class
