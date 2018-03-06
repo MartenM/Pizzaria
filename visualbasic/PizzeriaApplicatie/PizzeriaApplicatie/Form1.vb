@@ -157,4 +157,17 @@ Public Class Form1
         TB_Bestelling.Text = DGV_Main(1, e.RowIndex).Value
         TB_Adres.Text = DGV_Main(3, e.RowIndex).Value
     End Sub
+
+    Private Sub OptiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptiesToolStripMenuItem.Click
+        Dim dialog As New DatabaseOpties()
+        dialog.ShowDialog()
+
+        If (dialog.DialogResult = DialogResult.OK) Then
+            My.Settings.db_adres = dialog.TB_Adres.Text
+            My.Settings.db_username = dialog.TB_Gebruikersnaam.Text
+            My.Settings.db_wachtwoord = dialog.TB_Wachtwoord.Text
+            My.Settings.db_database = dialog.TB_Database.Text
+            My.Settings.Save()
+        End If
+    End Sub
 End Class

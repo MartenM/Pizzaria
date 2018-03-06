@@ -85,6 +85,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\DatabaseOpties.Designer.vb">
+      <DependentUpon>DatabaseOpties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DatabaseOpties.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DrlDatabase.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -110,6 +116,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialogs\DatabaseOpties.resx">
+      <DependentUpon>DatabaseOpties.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>

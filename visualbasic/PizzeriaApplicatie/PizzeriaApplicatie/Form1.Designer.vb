@@ -46,6 +46,7 @@ Partial Class Form1
         Me.TB_Bestelling = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label_StatusUpdate = New System.Windows.Forms.Label()
         Me.label_tijd = New System.Windows.Forms.Label()
         Me.Label_UpdateIn = New System.Windows.Forms.Label()
         Me.DGV_Main = New System.Windows.Forms.DataGridView()
@@ -53,7 +54,6 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OptiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OverToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label_StatusUpdate = New System.Windows.Forms.Label()
         Me.sidePanel.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -328,6 +328,15 @@ Partial Class Form1
         Me.Panel3.Size = New System.Drawing.Size(507, 30)
         Me.Panel3.TabIndex = 4
         '
+        'Label_StatusUpdate
+        '
+        Me.Label_StatusUpdate.AutoSize = True
+        Me.Label_StatusUpdate.Location = New System.Drawing.Point(117, 7)
+        Me.Label_StatusUpdate.Name = "Label_StatusUpdate"
+        Me.Label_StatusUpdate.Size = New System.Drawing.Size(47, 13)
+        Me.Label_StatusUpdate.TabIndex = 2
+        Me.Label_StatusUpdate.Text = "<status>"
+        '
         'label_tijd
         '
         Me.label_tijd.AutoSize = True
@@ -385,15 +394,6 @@ Partial Class Form1
         Me.OverToolStripMenuItem.Name = "OverToolStripMenuItem"
         Me.OverToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.OverToolStripMenuItem.Text = "Over"
-        '
-        'Label_StatusUpdate
-        '
-        Me.Label_StatusUpdate.AutoSize = True
-        Me.Label_StatusUpdate.Location = New System.Drawing.Point(117, 7)
-        Me.Label_StatusUpdate.Name = "Label_StatusUpdate"
-        Me.Label_StatusUpdate.Size = New System.Drawing.Size(47, 13)
-        Me.Label_StatusUpdate.TabIndex = 2
-        Me.Label_StatusUpdate.Text = "<status>"
         '
         'Form1
         '
