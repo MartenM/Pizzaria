@@ -38,11 +38,18 @@ Public Class Form1
 
     Private Sub resetStatusLabel()
         Thread.Sleep(2000)
+        If Me.IsDisposed Then
+            Return
+        End If
         Me.Invoke(
             Sub()
                 Label_StatusUpdate.Text = ""
             End Sub
         )
+    End Sub
+
+    Private Sub resetView()
+        Panel_BestellingOpties.Visible = False
     End Sub
 
     Private Sub Label_UpdateIn_Click(sender As Object, e As EventArgs) Handles Label_UpdateIn.Click
@@ -120,7 +127,7 @@ Public Class Form1
         Try
             connection.Open()
             Dim command As MySqlCommand = connection.CreateCommand()
-            command.CommandText = "UPDATE bestellingen SET adres=?, bestelling=? WHERE id = " + huidige_id.ToString()
+            command.CommandText = "UPDATE bestellingen SET adres=@adres, bestelling=@bestelling WHERE id = " + huidige_id.ToString()
             command.Parameters.AddWithValue("@adres", TB_Adres.Text)
             command.Parameters.AddWithValue("@bestelling", TB_Bestelling.Text)
             command.ExecuteNonQuery()
@@ -137,6 +144,8 @@ Public Class Form1
     End Sub
 
     Private Sub BT_OpenBestellingen_Click(sender As Object, e As EventArgs) Handles BT_OpenBestellingen.Click
+        resetView()
+
         Dim connection As MySqlConnection = database.grabConnection()
         Try
             connection.Open()
@@ -161,6 +170,13 @@ Public Class Form1
         huidige_id = DGV_Main(0, e.RowIndex).Value
         TB_Bestelling.Text = DGV_Main(1, e.RowIndex).Value
         TB_Adres.Text = DGV_Main(3, e.RowIndex).Value
+        If (DGV_Main(2, e.RowIndex).Value) Then
+            Label_Afhalen.Text = "JA"
+        Else
+            Label_Afhalen.Text = "NEE"
+        End If
+
+        Panel_BestellingOpties.Visible = True
     End Sub
 
     Private Sub OptiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptiesToolStripMenuItem.Click
@@ -175,5 +191,14 @@ Public Class Form1
             My.Settings.Save()
             laadDatabaseOpties()
         End If
+    End Sub
+
+    Private Sub BT_ZoekBestelling_Click(sender As Object, e As EventArgs) Handles BT_ZoekBestelling.Click
+        resetView()
+
+    End Sub
+
+    Private Sub BT_ZoekKlant_Click(sender As Object, e As EventArgs) Handles BT_ZoekKlant.Click
+        resetView()
     End Sub
 End Class

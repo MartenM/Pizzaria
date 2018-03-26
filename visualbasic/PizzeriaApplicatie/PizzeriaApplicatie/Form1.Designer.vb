@@ -34,13 +34,13 @@ Partial Class Form1
         Me.logoPanel = New System.Windows.Forms.Panel()
         Me.Labl_Logo = New System.Windows.Forms.Label()
         Me.header = New System.Windows.Forms.Panel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel_BestellingOpties = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BT_Gebruiker = New System.Windows.Forms.Button()
         Me.BT_Cancel = New System.Windows.Forms.Button()
         Me.BT_Afhandelen = New System.Windows.Forms.Button()
         Me.TB_Adres = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label_Afhalen = New System.Windows.Forms.Label()
         Me.L_Afhalen = New System.Windows.Forms.Label()
         Me.BT_Opslaan = New System.Windows.Forms.Button()
         Me.TB_Bestelling = New System.Windows.Forms.TextBox()
@@ -58,7 +58,7 @@ Partial Class Form1
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.logoPanel.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.Panel_BestellingOpties.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.DGV_Main, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -186,21 +186,22 @@ Partial Class Form1
         Me.header.Size = New System.Drawing.Size(706, 60)
         Me.header.TabIndex = 2
         '
-        'Panel1
+        'Panel_BestellingOpties
         '
-        Me.Panel1.BackColor = System.Drawing.Color.LightGray
-        Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Controls.Add(Me.TB_Adres)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.L_Afhalen)
-        Me.Panel1.Controls.Add(Me.BT_Opslaan)
-        Me.Panel1.Controls.Add(Me.TB_Bestelling)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(693, 84)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(199, 419)
-        Me.Panel1.TabIndex = 3
+        Me.Panel_BestellingOpties.BackColor = System.Drawing.Color.LightGray
+        Me.Panel_BestellingOpties.Controls.Add(Me.Panel2)
+        Me.Panel_BestellingOpties.Controls.Add(Me.TB_Adres)
+        Me.Panel_BestellingOpties.Controls.Add(Me.Label_Afhalen)
+        Me.Panel_BestellingOpties.Controls.Add(Me.L_Afhalen)
+        Me.Panel_BestellingOpties.Controls.Add(Me.BT_Opslaan)
+        Me.Panel_BestellingOpties.Controls.Add(Me.TB_Bestelling)
+        Me.Panel_BestellingOpties.Controls.Add(Me.Label1)
+        Me.Panel_BestellingOpties.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel_BestellingOpties.Location = New System.Drawing.Point(693, 84)
+        Me.Panel_BestellingOpties.Name = "Panel_BestellingOpties"
+        Me.Panel_BestellingOpties.Size = New System.Drawing.Size(199, 419)
+        Me.Panel_BestellingOpties.TabIndex = 3
+        Me.Panel_BestellingOpties.Visible = False
         '
         'Panel2
         '
@@ -269,14 +270,14 @@ Partial Class Form1
         Me.TB_Adres.Size = New System.Drawing.Size(175, 20)
         Me.TB_Adres.TabIndex = 5
         '
-        'Label2
+        'Label_Afhalen
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(108, 104)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(42, 13)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "<input>"
+        Me.Label_Afhalen.AutoSize = True
+        Me.Label_Afhalen.Location = New System.Drawing.Point(108, 104)
+        Me.Label_Afhalen.Name = "Label_Afhalen"
+        Me.Label_Afhalen.Size = New System.Drawing.Size(42, 13)
+        Me.Label_Afhalen.TabIndex = 4
+        Me.Label_Afhalen.Text = "<input>"
         '
         'L_Afhalen
         '
@@ -402,7 +403,7 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(892, 503)
         Me.Controls.Add(Me.DGV_Main)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel_BestellingOpties)
         Me.Controls.Add(Me.header)
         Me.Controls.Add(Me.sidePanel)
         Me.Controls.Add(Me.MenuStrip1)
@@ -416,8 +417,8 @@ Partial Class Form1
         Me.Panel4.PerformLayout()
         Me.logoPanel.ResumeLayout(False)
         Me.logoPanel.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.Panel_BestellingOpties.ResumeLayout(False)
+        Me.Panel_BestellingOpties.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -433,13 +434,13 @@ Partial Class Form1
     Friend WithEvents logoPanel As Panel
     Friend WithEvents header As Panel
     Friend WithEvents Labl_Logo As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel_BestellingOpties As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents BT_Gebruiker As Button
     Friend WithEvents BT_Cancel As Button
     Friend WithEvents BT_Afhandelen As Button
     Friend WithEvents TB_Adres As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents Label_Afhalen As Label
     Friend WithEvents L_Afhalen As Label
     Friend WithEvents BT_Opslaan As Button
     Friend WithEvents TB_Bestelling As TextBox
