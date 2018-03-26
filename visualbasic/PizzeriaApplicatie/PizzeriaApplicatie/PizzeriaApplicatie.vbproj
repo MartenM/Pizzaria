@@ -91,6 +91,18 @@
     <Compile Include="Dialogs\DatabaseOpties.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\ZoekBestellingDialog.Designer.vb">
+      <DependentUpon>ZoekBestellingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ZoekBestellingDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ZoekKlantDialog.Designer.vb">
+      <DependentUpon>ZoekKlantDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ZoekKlantDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DrlDatabase.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -114,10 +126,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utils\Mode.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\DatabaseOpties.resx">
       <DependentUpon>DatabaseOpties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ZoekBestellingDialog.resx">
+      <DependentUpon>ZoekBestellingDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ZoekKlantDialog.resx">
+      <DependentUpon>ZoekKlantDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

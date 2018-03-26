@@ -7,6 +7,8 @@ Public Class Form1
     Dim huidige_row As Integer
     Dim huidige_id As Integer
 
+    Dim modus As Mode = Nothing
+
     Public Sub updateDataGridView(ByVal query As String)
         label_tijd.Text = "Updaten van bestellingen... "
 
@@ -50,6 +52,9 @@ Public Class Form1
 
     Private Sub resetView()
         Panel_BestellingOpties.Visible = False
+        Panel_UpdateStatus.Visible = False
+        UpdateTimer.Stop()
+        DGV_Main.DataSource = Nothing
     End Sub
 
     Private Sub Label_UpdateIn_Click(sender As Object, e As EventArgs) Handles Label_UpdateIn.Click
@@ -144,7 +149,11 @@ Public Class Form1
     End Sub
 
     Private Sub BT_OpenBestellingen_Click(sender As Object, e As EventArgs) Handles BT_OpenBestellingen.Click
+        modus = Mode.Bestellingen
+
         resetView()
+        Panel_UpdateStatus.Visible = True
+        UpdateTimer.Start()
 
         Dim connection As MySqlConnection = database.grabConnection()
         Try
@@ -168,15 +177,18 @@ Public Class Form1
     Private Sub DataGridView1_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGV_Main.RowHeaderMouseClick
         huidige_row = e.RowIndex
         huidige_id = DGV_Main(0, e.RowIndex).Value
-        TB_Bestelling.Text = DGV_Main(1, e.RowIndex).Value
-        TB_Adres.Text = DGV_Main(3, e.RowIndex).Value
-        If (DGV_Main(2, e.RowIndex).Value) Then
-            Label_Afhalen.Text = "JA"
-        Else
-            Label_Afhalen.Text = "NEE"
-        End If
 
-        Panel_BestellingOpties.Visible = True
+        If modus = Mode.Bestellingen Then
+            TB_Bestelling.Text = DGV_Main(1, e.RowIndex).Value
+            TB_Adres.Text = DGV_Main(3, e.RowIndex).Value
+            If (DGV_Main(2, e.RowIndex).Value) Then
+                Label_Afhalen.Text = "JA"
+            Else
+                Label_Afhalen.Text = "NEE"
+            End If
+
+            Panel_BestellingOpties.Visible = True
+        End If
     End Sub
 
     Private Sub OptiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptiesToolStripMenuItem.Click
@@ -195,10 +207,94 @@ Public Class Form1
 
     Private Sub BT_ZoekBestelling_Click(sender As Object, e As EventArgs) Handles BT_ZoekBestelling.Click
         resetView()
+        modus = Mode.Bestellingen
 
+        resetView()
+        Dim dialog As New ZoekBestellingDialog()
+        dialog.ShowDialog()
+
+        If dialog.DialogResult <> DialogResult.OK Then
+            Return
+        End If
+
+        Dim connection As MySqlConnection = database.grabConnection()
+        Try
+            connection.Open()
+
+            Dim command As MySqlCommand
+
+            If dialog.TB_BestellingID.Text <> "" Then
+                command = New MySqlCommand("SELECT bestellingen.id, bestelling, afhalen, adres, klanten.voornaam, klanten.achternaam, datum, status FROM `bestellingen` INNER JOIN klanten ON klanten.id = bestellingen.klant WHERE bestellingen.id=@bestellingid ORDER BY datum ASC", connection)
+                command.Parameters.AddWithValue("@bestellingid", Integer.Parse(dialog.TB_BestellingID.Text))
+            ElseIf dialog.TB_KlantID.Text <> "" Then
+                command = New MySqlCommand("SELECT bestellingen.id, bestelling, afhalen, adres, klanten.voornaam, klanten.achternaam, datum, status FROM `bestellingen` INNER JOIN klanten ON klanten.id = bestellingen.klant WHERE klanten.id=@klantid ORDER BY datum ASC", connection)
+                command.Parameters.AddWithValue("@klantid", Integer.Parse(dialog.TB_KlantID.Text))
+            Else
+                command = New MySqlCommand("SELECT bestellingen.id, bestelling, afhalen, adres, klanten.voornaam, klanten.achternaam, datum, status FROM `bestellingen` INNER JOIN klanten ON klanten.id = bestellingen.klant WHERE bestelling LIKE @bestelling AND adres LIKE @adres AND status LIKE @status ORDER BY datum ASC", connection)
+                command.Parameters.AddWithValue("@bestelling", "%" + dialog.TB_Bestelling.Text + "%")
+                command.Parameters.AddWithValue("@adres", "%" + dialog.TB_Adres.Text + "%")
+                command.Parameters.AddWithValue("@status", "%" + dialog.CB_Status.SelectedItem + "%")
+            End If
+
+            Dim adapter As New MySqlDataAdapter
+            adapter.SelectCommand = command
+
+            Dim dataset As New DataSet
+
+            adapter.Fill(dataset)
+
+            DGV_Main.DataSource = dataset.Tables(0)
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " + ex.ToString())
+        Finally
+            connection.Close()
+            setStatusLabel("Bestellingen geladen", Color.Black)
+        End Try
     End Sub
 
     Private Sub BT_ZoekKlant_Click(sender As Object, e As EventArgs) Handles BT_ZoekKlant.Click
+        modus = Mode.Klanten
+
         resetView()
+        Dim dialog As New ZoekKlantDialog()
+        dialog.ShowDialog()
+
+        If dialog.DialogResult <> DialogResult.OK Then
+            Return
+        End If
+
+        Dim connection As MySqlConnection = database.grabConnection()
+        Try
+            connection.Open()
+
+            Dim command As MySqlCommand
+
+            If dialog.TB_ID.Text = "" Then
+                command = New MySqlCommand("SELECT id, voornaam, achternaam, registratie, email, spaarpunten, actief, banned FROM klanten WHERE voornaam LIKE @voornaam AND achternaam LIKE @achternaam AND email LIKE @email", connection)
+                command.Parameters.AddWithValue("@voornaam", "%" + dialog.TB_Voornaam.Text + "%")
+                command.Parameters.AddWithValue("@achternaam", "%" + dialog.TB_Achternaam.Text + "%")
+                command.Parameters.AddWithValue("@email", "%" + dialog.TB_Email.Text + "%")
+            Else
+                command = New MySqlCommand("SELECT id, voornaam, achternaam, registratie, email, spaarpunten, actief, banned FROM klanten WHERE id=@id", connection)
+                command.Parameters.AddWithValue("@id", Integer.Parse(dialog.TB_ID.Text))
+            End If
+
+            Dim adapter As New MySqlDataAdapter
+            adapter.SelectCommand = command
+
+            Dim dataset As New DataSet
+
+            adapter.Fill(dataset)
+
+            DGV_Main.DataSource = dataset.Tables(0)
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " + ex.ToString())
+        Finally
+            connection.Close()
+            setStatusLabel("Klanten geladen", Color.Black)
+        End Try
+
     End Sub
 End Class
