@@ -29,7 +29,8 @@
         
         while($rij = $pizzas->fetch_assoc()) {
             
-            $aantal = $_POST[$rij['naam']];
+            // Hier word str_replace gebruikt om de spaties om te zetten in _. Dit is omdat de PHP form de spaties tijdens het POST process omzet in _.
+            $aantal = $_POST[str_replace(" ", "_", $rij['naam'])];
             
             if(!empty($aantal)){
                 if(!is_numeric($aantal)){
@@ -62,7 +63,7 @@
             }
         }
 		
-		if($bestelling = '' || count($lijst) == 0){
+		if($bestelling == '' || count($lijst) == 0){
 			$error = true;
             $error_msg = "Ongeldige bestelling.";
 		}

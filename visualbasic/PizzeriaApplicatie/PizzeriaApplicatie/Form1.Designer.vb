@@ -34,21 +34,22 @@ Partial Class Form1
         Me.logoPanel = New System.Windows.Forms.Panel()
         Me.Labl_Logo = New System.Windows.Forms.Label()
         Me.header = New System.Windows.Forms.Panel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel_BestellingOpties = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BT_Gebruiker = New System.Windows.Forms.Button()
         Me.BT_Cancel = New System.Windows.Forms.Button()
         Me.BT_Afhandelen = New System.Windows.Forms.Button()
         Me.TB_Adres = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label_Afhalen = New System.Windows.Forms.Label()
         Me.L_Afhalen = New System.Windows.Forms.Label()
         Me.BT_Opslaan = New System.Windows.Forms.Button()
         Me.TB_Bestelling = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel_UpdateStatus = New System.Windows.Forms.Panel()
+        Me.Label_StatusUpdate = New System.Windows.Forms.Label()
         Me.label_tijd = New System.Windows.Forms.Label()
         Me.Label_UpdateIn = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DGV_Main = New System.Windows.Forms.DataGridView()
         Me.UpdateTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OptiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -57,10 +58,10 @@ Partial Class Form1
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.logoPanel.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.Panel_BestellingOpties.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel_UpdateStatus.SuspendLayout()
+        CType(Me.DGV_Main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -185,21 +186,22 @@ Partial Class Form1
         Me.header.Size = New System.Drawing.Size(706, 60)
         Me.header.TabIndex = 2
         '
-        'Panel1
+        'Panel_BestellingOpties
         '
-        Me.Panel1.BackColor = System.Drawing.Color.LightGray
-        Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Controls.Add(Me.TB_Adres)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.L_Afhalen)
-        Me.Panel1.Controls.Add(Me.BT_Opslaan)
-        Me.Panel1.Controls.Add(Me.TB_Bestelling)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(693, 84)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(199, 419)
-        Me.Panel1.TabIndex = 3
+        Me.Panel_BestellingOpties.BackColor = System.Drawing.Color.LightGray
+        Me.Panel_BestellingOpties.Controls.Add(Me.Panel2)
+        Me.Panel_BestellingOpties.Controls.Add(Me.TB_Adres)
+        Me.Panel_BestellingOpties.Controls.Add(Me.Label_Afhalen)
+        Me.Panel_BestellingOpties.Controls.Add(Me.L_Afhalen)
+        Me.Panel_BestellingOpties.Controls.Add(Me.BT_Opslaan)
+        Me.Panel_BestellingOpties.Controls.Add(Me.TB_Bestelling)
+        Me.Panel_BestellingOpties.Controls.Add(Me.Label1)
+        Me.Panel_BestellingOpties.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel_BestellingOpties.Location = New System.Drawing.Point(693, 84)
+        Me.Panel_BestellingOpties.Name = "Panel_BestellingOpties"
+        Me.Panel_BestellingOpties.Size = New System.Drawing.Size(199, 419)
+        Me.Panel_BestellingOpties.TabIndex = 3
+        Me.Panel_BestellingOpties.Visible = False
         '
         'Panel2
         '
@@ -268,14 +270,14 @@ Partial Class Form1
         Me.TB_Adres.Size = New System.Drawing.Size(175, 20)
         Me.TB_Adres.TabIndex = 5
         '
-        'Label2
+        'Label_Afhalen
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(108, 104)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(42, 13)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "<input>"
+        Me.Label_Afhalen.AutoSize = True
+        Me.Label_Afhalen.Location = New System.Drawing.Point(108, 104)
+        Me.Label_Afhalen.Name = "Label_Afhalen"
+        Me.Label_Afhalen.Size = New System.Drawing.Size(42, 13)
+        Me.Label_Afhalen.TabIndex = 4
+        Me.Label_Afhalen.Text = "<input>"
         '
         'L_Afhalen
         '
@@ -316,15 +318,25 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Bestelling"
         '
-        'Panel3
+        'Panel_UpdateStatus
         '
-        Me.Panel3.Controls.Add(Me.label_tijd)
-        Me.Panel3.Controls.Add(Me.Label_UpdateIn)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(186, 84)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(507, 30)
-        Me.Panel3.TabIndex = 4
+        Me.Panel_UpdateStatus.Controls.Add(Me.Label_StatusUpdate)
+        Me.Panel_UpdateStatus.Controls.Add(Me.label_tijd)
+        Me.Panel_UpdateStatus.Controls.Add(Me.Label_UpdateIn)
+        Me.Panel_UpdateStatus.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel_UpdateStatus.Location = New System.Drawing.Point(186, 84)
+        Me.Panel_UpdateStatus.Name = "Panel_UpdateStatus"
+        Me.Panel_UpdateStatus.Size = New System.Drawing.Size(507, 30)
+        Me.Panel_UpdateStatus.TabIndex = 4
+        '
+        'Label_StatusUpdate
+        '
+        Me.Label_StatusUpdate.AutoSize = True
+        Me.Label_StatusUpdate.Location = New System.Drawing.Point(117, 7)
+        Me.Label_StatusUpdate.Name = "Label_StatusUpdate"
+        Me.Label_StatusUpdate.Size = New System.Drawing.Size(47, 13)
+        Me.Label_StatusUpdate.TabIndex = 2
+        Me.Label_StatusUpdate.Text = "<status>"
         '
         'label_tijd
         '
@@ -345,18 +357,18 @@ Partial Class Form1
         Me.Label_UpdateIn.TabIndex = 0
         Me.Label_UpdateIn.Text = "Update in:"
         '
-        'DataGridView1
+        'DGV_Main
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(186, 114)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(507, 389)
-        Me.DataGridView1.TabIndex = 5
+        Me.DGV_Main.AllowUserToAddRows = False
+        Me.DGV_Main.AllowUserToDeleteRows = False
+        Me.DGV_Main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DGV_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV_Main.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGV_Main.Location = New System.Drawing.Point(186, 114)
+        Me.DGV_Main.Name = "DGV_Main"
+        Me.DGV_Main.ReadOnly = True
+        Me.DGV_Main.Size = New System.Drawing.Size(507, 389)
+        Me.DGV_Main.TabIndex = 5
         '
         'UpdateTimer
         '
@@ -389,9 +401,9 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(892, 503)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.DGV_Main)
+        Me.Controls.Add(Me.Panel_UpdateStatus)
+        Me.Controls.Add(Me.Panel_BestellingOpties)
         Me.Controls.Add(Me.header)
         Me.Controls.Add(Me.sidePanel)
         Me.Controls.Add(Me.MenuStrip1)
@@ -405,12 +417,12 @@ Partial Class Form1
         Me.Panel4.PerformLayout()
         Me.logoPanel.ResumeLayout(False)
         Me.logoPanel.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.Panel_BestellingOpties.ResumeLayout(False)
+        Me.Panel_BestellingOpties.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel_UpdateStatus.ResumeLayout(False)
+        Me.Panel_UpdateStatus.PerformLayout()
+        CType(Me.DGV_Main, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -422,21 +434,21 @@ Partial Class Form1
     Friend WithEvents logoPanel As Panel
     Friend WithEvents header As Panel
     Friend WithEvents Labl_Logo As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel_BestellingOpties As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents BT_Gebruiker As Button
     Friend WithEvents BT_Cancel As Button
     Friend WithEvents BT_Afhandelen As Button
     Friend WithEvents TB_Adres As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents Label_Afhalen As Label
     Friend WithEvents L_Afhalen As Label
     Friend WithEvents BT_Opslaan As Button
     Friend WithEvents TB_Bestelling As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel_UpdateStatus As Panel
     Friend WithEvents label_tijd As Label
     Friend WithEvents Label_UpdateIn As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGV_Main As DataGridView
     Friend WithEvents UpdateTimer As Timer
     Friend WithEvents Panel5 As Panel
     Friend WithEvents BT_OpenBestellingen As Button
@@ -447,4 +459,5 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents OptiesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OverToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label_StatusUpdate As Label
 End Class

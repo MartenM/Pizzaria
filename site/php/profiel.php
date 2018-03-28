@@ -19,6 +19,9 @@
     $sql = "SELECT * FROM bestellingen WHERE klant=" . $_SESSION['id'] . " ORDER BY datum DESC";
     $geschiedenis = $mysqli->query($sql);
 
+    $sql = "SELECT COUNT(*) as 'aantal' FROM bestellingen WHERE klant=" . $_SESSION['id'];
+    $aantal = $mysqli->query($sql)->fetch_assoc()['aantal'];
+
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +98,7 @@
                     <div class="stats">
                         <ul>
                             <li><img src="../resources/icons/kalender.png" style="height: 16px; width: 16px"> <span class="key">Geregistreerd op:</span> <span class="value"><?php echo $_SESSION['registratie'];?></span></li>
-                            <li><img src="../resources/icons/aantal.png" style="height: 16px; width: 16px"> <span class="key">Aantal bestellingen:</span> <span class="value"><?php echo $_SESSION['bestellingen'];?></span></li>
+                            <li><img src="../resources/icons/aantal.png" style="height: 16px; width: 16px"> <span class="key">Aantal bestellingen:</span> <span class="value"><?php echo $aantal;?></span></li>
                             <li><img src="../resources/icons/pizza.png" style="height: 16px; width: 16px"> <span class="key">Spaarpunten:</span> <span class="value"><?php echo $_SESSION['spaarpunten'];?></span></li>
                         </ul>
                     </div>
