@@ -8,11 +8,28 @@
     // Check of de gebruiker ingelogt is. Zo niet dan stop de php code hier en word de gebruiker doorgestuurd.
     require 'checklogin.php';
 
+    if($_SESSION['banned']){
+        $_SESSION['msg_notice'] = "U bent verbannen. U kunt niet langer bestellingen plaatsen.";
+        header("Location: profiel.php");   
+        exit;
+    }
+
     require 'pizzaObject.php';
 
     // Haal de database connectie op.
     $mysqli = '';
     require "db.php";
+
+    // Kijk of de gebruiker niet verbannen is in de database.
+    $sql = "SELECT banned FROM klanten WHERE id=$_SESSION[id] AND banned = true";
+    $verbannen = $mysqli->query($sql)->num_rows > 0;
+
+    if($verbannen){
+        $_SESSION['banned'] = true;
+        $_SESSION['msg_notice'] = "U bent verbannen. U kunt niet langer bestellingen plaatsen.";
+        header("Location: profiel.php");   
+        exit;
+    }
     
     $sql = "SELECT * FROM pizzas;";
     $pizzas = $mysqli->query($sql);
@@ -110,6 +127,12 @@
             
             } else {
                 $_SESSION['msg_notice'] = "Er is iets mis gegaan tijdens het bestellen. Geliefd het nog een keer te proberen.<br><br>" . $mysqli->error . "<br><br>" . $sql_bestelling;
+            }
+            
+            if($mysqli->query("UPDATE klanten SET spaarpunten = spaarpunten + " . intval($totaalprijs / 2)) . " WHERE id = " +$_SESSION['id']){
+                // Hier kunnen we nog iets verder uitv
+                $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<BR><BR>" . intval($totaalprijs / 2) . " spaarpunten verzameld.";
+                $_SESSION['spaarpunten'] = $_SESSION['spaarpunten'] + intval($totaalprijs / 2);
             }
             
             header("Location: profiel.php");   
