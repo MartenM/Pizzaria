@@ -22,10 +22,7 @@ Partial Class DatabaseOpties
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.OK_Button = New System.Windows.Forms.Button()
-        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TB_Gebruikersnaam = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TB_Wachtwoord = New System.Windows.Forms.TextBox()
@@ -34,33 +31,11 @@ Partial Class DatabaseOpties
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TB_Adres = New System.Windows.Forms.TextBox()
+        Me.OK_Button = New System.Windows.Forms.Button()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'OK_Button
-        '
-        Me.OK_Button.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Right
-        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OK_Button.Location = New System.Drawing.Point(348, 0)
-        Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(67, 33)
-        Me.OK_Button.TabIndex = 0
-        Me.OK_Button.Text = "OK"
-        Me.OK_Button.UseVisualStyleBackColor = False
-        '
-        'Cancel_Button
-        '
-        Me.Cancel_Button.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cancel_Button.Location = New System.Drawing.Point(281, 0)
-        Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(67, 33)
-        Me.Cancel_Button.TabIndex = 1
-        Me.Cancel_Button.Text = "Cancel"
-        Me.Cancel_Button.UseVisualStyleBackColor = False
         '
         'Panel1
         '
@@ -70,17 +45,6 @@ Partial Class DatabaseOpties
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(415, 15)
         Me.Panel1.TabIndex = 1
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(76, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.Cancel_Button)
-        Me.Panel2.Controls.Add(Me.OK_Button)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 185)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(415, 33)
-        Me.Panel2.TabIndex = 2
         '
         'TB_Gebruikersnaam
         '
@@ -147,6 +111,42 @@ Partial Class DatabaseOpties
         Me.TB_Adres.Size = New System.Drawing.Size(391, 20)
         Me.TB_Adres.TabIndex = 4
         '
+        'OK_Button
+        '
+        Me.OK_Button.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Right
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OK_Button.Location = New System.Drawing.Point(348, 0)
+        Me.OK_Button.Name = "OK_Button"
+        Me.OK_Button.Size = New System.Drawing.Size(67, 33)
+        Me.OK_Button.TabIndex = 0
+        Me.OK_Button.Text = "OK"
+        Me.OK_Button.UseVisualStyleBackColor = False
+        '
+        'Cancel_Button
+        '
+        Me.Cancel_Button.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Cancel_Button.Location = New System.Drawing.Point(281, 0)
+        Me.Cancel_Button.Name = "Cancel_Button"
+        Me.Cancel_Button.Size = New System.Drawing.Size(67, 33)
+        Me.Cancel_Button.TabIndex = 1
+        Me.Cancel_Button.Text = "Cancel"
+        Me.Cancel_Button.UseVisualStyleBackColor = False
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(76, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.Cancel_Button)
+        Me.Panel2.Controls.Add(Me.OK_Button)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(0, 185)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(415, 33)
+        Me.Panel2.TabIndex = 2
+        '
         'DatabaseOpties
         '
         Me.AcceptButton = Me.OK_Button
@@ -176,10 +176,7 @@ Partial Class DatabaseOpties
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents OK_Button As System.Windows.Forms.Button
-    Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents TB_Gebruikersnaam As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents TB_Wachtwoord As TextBox
@@ -188,4 +185,7 @@ Partial Class DatabaseOpties
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents TB_Adres As TextBox
+    Friend WithEvents OK_Button As Button
+    Friend WithEvents Cancel_Button As Button
+    Friend WithEvents Panel2 As Panel
 End Class
