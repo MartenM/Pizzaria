@@ -99,6 +99,9 @@ Public Class Form1
             Dim command As MySqlCommand = connection.CreateCommand()
             command.CommandText = "UPDATE bestellingen SET status='GESLOTEN' WHERE id = " + huidige_id.ToString()
             command.ExecuteNonQuery()
+
+            DGV_Main(7, huidige_row).Value = "GESLOTEN"
+
             setStatusLabel("Bestelling succesvol afgehandelt", Color.Green)
         Catch ex As Exception
             MsgBox("Onverwachte error: " + ex.Message)
@@ -116,6 +119,8 @@ Public Class Form1
             Dim command As MySqlCommand = connection.CreateCommand()
             command.CommandText = "UPDATE bestellingen SET status='CANCELLED' WHERE id = " + huidige_id.ToString()
             command.ExecuteNonQuery()
+
+            DGV_Main(7, huidige_row).Value = "CANCELLED"
 
             setStatusLabel("Bestelling succesvol gecancelled", Color.Green)
         Catch ex As Exception
@@ -136,6 +141,10 @@ Public Class Form1
             command.Parameters.AddWithValue("@adres", TB_Adres.Text)
             command.Parameters.AddWithValue("@bestelling", TB_Bestelling.Text)
             command.ExecuteNonQuery()
+
+            DGV_Main(1, huidige_row).Value = TB_Bestelling.Text
+            DGV_Main(3, huidige_row).Value = TB_Adres.Text
+
             setStatusLabel("Bestelling succesvol geüpdated", Color.Green)
         Catch ex As Exception
             MsgBox("Onverwachte error: " + ex.Message)
@@ -190,10 +199,50 @@ Public Class Form1
             Panel_BestellingOpties.Visible = True
         ElseIf modus = Mode.Klanten Then
             Dim dialog As New KlantDialog()
+
+            dialog.Text = $"Klant #{DGV_Main(0, e.RowIndex).Value} {DGV_Main(1, e.RowIndex).Value} {DGV_Main(2, e.RowIndex).Value}"
+            dialog.TB_Voornaam.Text = DGV_Main(1, e.RowIndex).Value
+            dialog.TB_Achternaam.Text = DGV_Main(2, e.RowIndex).Value
+            dialog.TB_Email.Text = DGV_Main(4, e.RowIndex).Value
+            dialog.NUD_Spaarpunten.Value = DGV_Main(5, e.RowIndex).Value
+            dialog.CB_Actief.Checked = DGV_Main(6, e.RowIndex).Value
+            dialog.CB_Banned.Checked = DGV_Main(7, e.RowIndex).Value
+
             dialog.ShowDialog()
 
             If dialog.DialogResult = DialogResult.OK Then
-                ' Klant gegevens opslaan!
+                ' Hier updaten we de gridview om de juiste resultaten te laten zien.
+                DGV_Main(1, e.RowIndex).Value = dialog.TB_Voornaam.Text
+                DGV_Main(2, e.RowIndex).Value = dialog.TB_Achternaam.Text
+                DGV_Main(4, e.RowIndex).Value = dialog.TB_Email.Text
+                DGV_Main(5, e.RowIndex).Value = dialog.NUD_Spaarpunten.Value
+                DGV_Main(6, e.RowIndex).Value = dialog.CB_Actief.Checked
+                DGV_Main(7, e.RowIndex).Value = dialog.CB_Banned.Checked
+
+
+                ' Pas de verandering toe in de database.
+                Dim connection As MySqlConnection = database.grabConnection()
+                Try
+                    connection.Open()
+                    Dim command As MySqlCommand = connection.CreateCommand()
+                    command.CommandText = "UPDATE klanten SET voornaam=@voornaam, achternaam=@achternaam, email = @email, spaarpunten = @spaarpunten, actief = @actief, banned = @banned WHERE id = " + huidige_id.ToString()
+                    command.Parameters.AddWithValue("@voornaam", dialog.TB_Voornaam.Text)
+                    command.Parameters.AddWithValue("@achternaam", dialog.TB_Achternaam.Text)
+                    command.Parameters.AddWithValue("@email", dialog.TB_Email.Text)
+                    command.Parameters.AddWithValue("@spaarpunten", dialog.NUD_Spaarpunten.Value)
+                    command.Parameters.AddWithValue("@actief", dialog.CB_Actief.Checked)
+                    command.Parameters.AddWithValue("@banned", dialog.CB_Banned.Checked)
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Klant gegevens succesvol geüpdated.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MsgBox("Onverwachte error: " + ex.Message)
+                Finally
+                    If connection.State <> ConnectionState.Closed Then
+                        connection.Close()
+                    End If
+
+                End Try
+
             End If
         End If
     End Sub
@@ -303,5 +352,62 @@ Public Class Form1
             setStatusLabel("Klanten geladen", Color.Black)
         End Try
 
+    End Sub
+
+    Private Sub BT_Gebruiker_Click(sender As Object, e As EventArgs) Handles BT_Gebruiker.Click
+
+        Dim dialog As New KlantDialog()
+
+
+        Try
+            Dim connection As MySqlConnection = database.grabConnection()
+            connection.Open()
+
+            Dim command As New MySqlCommand("select id, voornaam, achternaam, email, spaarpunten, actief, banned from klanten where klanten.id = (select bestellingen.klant from bestellingen where bestellingen.id = " + huidige_id.ToString() + ")", connection)
+            Dim reader As MySqlDataReader = command.ExecuteReader
+            If (reader.HasRows) Then
+                While (reader.Read)
+                    dialog.id = reader.GetInt32(0)
+                    dialog.TB_Voornaam.Text = reader.GetString(1)
+                    dialog.TB_Achternaam.Text = reader.GetString(2)
+                    dialog.TB_Email.Text = reader.GetString(3)
+                    dialog.NUD_Spaarpunten.Value = reader.GetInt32(4)
+                    dialog.CB_Actief.Checked = reader.GetBoolean(5)
+                    dialog.CB_Banned.Checked = reader.GetBoolean(6)
+                End While
+            End If
+
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show("Onverwachte error! " + ex.ToString)
+        End Try
+
+        dialog.ShowDialog()
+
+        If dialog.DialogResult = DialogResult.OK Then
+            ' Pas de verandering toe in de database.
+            Dim connection As MySqlConnection = database.grabConnection()
+            Try
+                connection.Open()
+                Dim command As MySqlCommand = connection.CreateCommand()
+                command.CommandText = "UPDATE klanten SET voornaam=@voornaam, achternaam=@achternaam, email = @email, spaarpunten = @spaarpunten, actief = @actief, banned = @banned WHERE id = " + dialog.id.ToString()
+                command.Parameters.AddWithValue("@voornaam", dialog.TB_Voornaam.Text)
+                command.Parameters.AddWithValue("@achternaam", dialog.TB_Achternaam.Text)
+                command.Parameters.AddWithValue("@email", dialog.TB_Email.Text)
+                command.Parameters.AddWithValue("@spaarpunten", dialog.NUD_Spaarpunten.Value)
+                command.Parameters.AddWithValue("@actief", dialog.CB_Actief.Checked)
+                command.Parameters.AddWithValue("@banned", dialog.CB_Banned.Checked)
+                command.ExecuteNonQuery()
+                MessageBox.Show("Klant gegevens succesvol geüpdated.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MsgBox("Onverwachte error: " + ex.Message)
+            Finally
+                If connection.State <> ConnectionState.Closed Then
+                    connection.Close()
+                End If
+
+            End Try
+
+        End If
     End Sub
 End Class

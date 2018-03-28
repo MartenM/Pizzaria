@@ -26,18 +26,18 @@ Partial Class KlantDialog
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TbVoornaam = New System.Windows.Forms.TextBox()
-        Me.TbAchternaam = New System.Windows.Forms.TextBox()
-        Me.TbEmail = New System.Windows.Forms.TextBox()
-        Me.CbActief = New System.Windows.Forms.CheckBox()
-        Me.CbBanned = New System.Windows.Forms.CheckBox()
-        Me.NudSpaarpunten = New System.Windows.Forms.NumericUpDown()
+        Me.TB_Voornaam = New System.Windows.Forms.TextBox()
+        Me.TB_Achternaam = New System.Windows.Forms.TextBox()
+        Me.TB_Email = New System.Windows.Forms.TextBox()
+        Me.CB_Actief = New System.Windows.Forms.CheckBox()
+        Me.CB_Banned = New System.Windows.Forms.CheckBox()
+        Me.NUD_Spaarpunten = New System.Windows.Forms.NumericUpDown()
         Me.Voornaam = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
-        CType(Me.NudSpaarpunten, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUD_Spaarpunten, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -61,7 +61,7 @@ Partial Class KlantDialog
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(67, 33)
         Me.Cancel_Button.TabIndex = 1
-        Me.Cancel_Button.Text = "Cancel"
+        Me.Cancel_Button.Text = "Sluiten"
         Me.Cancel_Button.UseVisualStyleBackColor = False
         '
         'OK_Button
@@ -73,7 +73,7 @@ Partial Class KlantDialog
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(67, 33)
         Me.OK_Button.TabIndex = 0
-        Me.OK_Button.Text = "OK"
+        Me.OK_Button.Text = "Opslaan"
         Me.OK_Button.UseVisualStyleBackColor = False
         '
         'Panel1
@@ -85,53 +85,54 @@ Partial Class KlantDialog
         Me.Panel1.Size = New System.Drawing.Size(299, 15)
         Me.Panel1.TabIndex = 4
         '
-        'TbVoornaam
+        'TB_Voornaam
         '
-        Me.TbVoornaam.Location = New System.Drawing.Point(12, 38)
-        Me.TbVoornaam.Name = "TbVoornaam"
-        Me.TbVoornaam.Size = New System.Drawing.Size(265, 20)
-        Me.TbVoornaam.TabIndex = 5
+        Me.TB_Voornaam.Location = New System.Drawing.Point(12, 38)
+        Me.TB_Voornaam.Name = "TB_Voornaam"
+        Me.TB_Voornaam.Size = New System.Drawing.Size(265, 20)
+        Me.TB_Voornaam.TabIndex = 5
         '
-        'TbAchternaam
+        'TB_Achternaam
         '
-        Me.TbAchternaam.Location = New System.Drawing.Point(12, 81)
-        Me.TbAchternaam.Name = "TbAchternaam"
-        Me.TbAchternaam.Size = New System.Drawing.Size(265, 20)
-        Me.TbAchternaam.TabIndex = 6
+        Me.TB_Achternaam.Location = New System.Drawing.Point(12, 81)
+        Me.TB_Achternaam.Name = "TB_Achternaam"
+        Me.TB_Achternaam.Size = New System.Drawing.Size(265, 20)
+        Me.TB_Achternaam.TabIndex = 6
         '
-        'TbEmail
+        'TB_Email
         '
-        Me.TbEmail.Location = New System.Drawing.Point(12, 120)
-        Me.TbEmail.Name = "TbEmail"
-        Me.TbEmail.Size = New System.Drawing.Size(265, 20)
-        Me.TbEmail.TabIndex = 7
+        Me.TB_Email.Location = New System.Drawing.Point(12, 120)
+        Me.TB_Email.Name = "TB_Email"
+        Me.TB_Email.Size = New System.Drawing.Size(265, 20)
+        Me.TB_Email.TabIndex = 7
         '
-        'CbActief
+        'CB_Actief
         '
-        Me.CbActief.AutoSize = True
-        Me.CbActief.Location = New System.Drawing.Point(15, 196)
-        Me.CbActief.Name = "CbActief"
-        Me.CbActief.Size = New System.Drawing.Size(53, 17)
-        Me.CbActief.TabIndex = 9
-        Me.CbActief.Text = "Actief"
-        Me.CbActief.UseVisualStyleBackColor = True
+        Me.CB_Actief.AutoSize = True
+        Me.CB_Actief.Location = New System.Drawing.Point(15, 196)
+        Me.CB_Actief.Name = "CB_Actief"
+        Me.CB_Actief.Size = New System.Drawing.Size(53, 17)
+        Me.CB_Actief.TabIndex = 9
+        Me.CB_Actief.Text = "Actief"
+        Me.CB_Actief.UseVisualStyleBackColor = True
         '
-        'CbBanned
+        'CB_Banned
         '
-        Me.CbBanned.AutoSize = True
-        Me.CbBanned.Location = New System.Drawing.Point(13, 229)
-        Me.CbBanned.Name = "CbBanned"
-        Me.CbBanned.Size = New System.Drawing.Size(63, 17)
-        Me.CbBanned.TabIndex = 10
-        Me.CbBanned.Text = "Banned"
-        Me.CbBanned.UseVisualStyleBackColor = True
+        Me.CB_Banned.AutoSize = True
+        Me.CB_Banned.Location = New System.Drawing.Point(13, 229)
+        Me.CB_Banned.Name = "CB_Banned"
+        Me.CB_Banned.Size = New System.Drawing.Size(63, 17)
+        Me.CB_Banned.TabIndex = 10
+        Me.CB_Banned.Text = "Banned"
+        Me.CB_Banned.UseVisualStyleBackColor = True
         '
-        'NudSpaarpunten
+        'NUD_Spaarpunten
         '
-        Me.NudSpaarpunten.Location = New System.Drawing.Point(12, 159)
-        Me.NudSpaarpunten.Name = "NudSpaarpunten"
-        Me.NudSpaarpunten.Size = New System.Drawing.Size(265, 20)
-        Me.NudSpaarpunten.TabIndex = 11
+        Me.NUD_Spaarpunten.Location = New System.Drawing.Point(12, 159)
+        Me.NUD_Spaarpunten.Maximum = New Decimal(New Integer() {276447231, 23283, 0, 0})
+        Me.NUD_Spaarpunten.Name = "NUD_Spaarpunten"
+        Me.NUD_Spaarpunten.Size = New System.Drawing.Size(265, 20)
+        Me.NUD_Spaarpunten.TabIndex = 11
         '
         'Voornaam
         '
@@ -178,12 +179,12 @@ Partial Class KlantDialog
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Voornaam)
-        Me.Controls.Add(Me.NudSpaarpunten)
-        Me.Controls.Add(Me.CbBanned)
-        Me.Controls.Add(Me.CbActief)
-        Me.Controls.Add(Me.TbEmail)
-        Me.Controls.Add(Me.TbAchternaam)
-        Me.Controls.Add(Me.TbVoornaam)
+        Me.Controls.Add(Me.NUD_Spaarpunten)
+        Me.Controls.Add(Me.CB_Banned)
+        Me.Controls.Add(Me.CB_Actief)
+        Me.Controls.Add(Me.TB_Email)
+        Me.Controls.Add(Me.TB_Achternaam)
+        Me.Controls.Add(Me.TB_Voornaam)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -196,7 +197,7 @@ Partial Class KlantDialog
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "KlantDialog"
         Me.Panel2.ResumeLayout(False)
-        CType(Me.NudSpaarpunten, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUD_Spaarpunten, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -206,12 +207,12 @@ Partial Class KlantDialog
     Friend WithEvents Cancel_Button As Button
     Friend WithEvents OK_Button As Button
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TbVoornaam As TextBox
-    Friend WithEvents TbAchternaam As TextBox
-    Friend WithEvents TbEmail As TextBox
-    Friend WithEvents CbActief As CheckBox
-    Friend WithEvents CbBanned As CheckBox
-    Friend WithEvents NudSpaarpunten As NumericUpDown
+    Friend WithEvents TB_Voornaam As TextBox
+    Friend WithEvents TB_Achternaam As TextBox
+    Friend WithEvents TB_Email As TextBox
+    Friend WithEvents CB_Actief As CheckBox
+    Friend WithEvents CB_Banned As CheckBox
+    Friend WithEvents NUD_Spaarpunten As NumericUpDown
     Friend WithEvents Voornaam As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
