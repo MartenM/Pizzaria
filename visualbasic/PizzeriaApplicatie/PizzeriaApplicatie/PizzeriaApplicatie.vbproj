@@ -91,6 +91,12 @@
     <Compile Include="Dialogs\DatabaseOpties.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\KlantDialog.Designer.vb">
+      <DependentUpon>KlantDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\KlantDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\ZoekBestellingDialog.Designer.vb">
       <DependentUpon>ZoekBestellingDialog.vb</DependentUpon>
     </Compile>
@@ -131,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\DatabaseOpties.resx">
       <DependentUpon>DatabaseOpties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\KlantDialog.resx">
+      <DependentUpon>KlantDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ZoekBestellingDialog.resx">
       <DependentUpon>ZoekBestellingDialog.vb</DependentUpon>

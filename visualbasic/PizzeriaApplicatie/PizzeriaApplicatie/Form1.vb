@@ -188,6 +188,13 @@ Public Class Form1
             End If
 
             Panel_BestellingOpties.Visible = True
+        ElseIf modus = Mode.Klanten Then
+            Dim dialog As New KlantDialog()
+            dialog.ShowDialog()
+
+            If dialog.DialogResult = DialogResult.OK Then
+                ' Klant gegevens opslaan!
+            End If
         End If
     End Sub
 
