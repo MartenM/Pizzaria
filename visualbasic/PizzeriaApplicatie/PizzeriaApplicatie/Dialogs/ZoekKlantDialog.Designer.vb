@@ -169,7 +169,7 @@ Partial Class ZoekKlantDialog
         Me.Name = "ZoekKlantDialog"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "ZoekKlantDialog"
+        Me.Text = "Zoek Klant"
         Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

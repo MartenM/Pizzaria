@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("DATZOUJEWELWILLENWETENHE")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property db_wachtwoord() As String
             Get
                 Return CType(Me("db_wachtwoord"),String)

@@ -191,7 +191,7 @@ Partial Class ZoekBestellingDialog
         Me.Name = "ZoekBestellingDialog"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "ZoekBestellingDialog"
+        Me.Text = "Zoek Bestelling"
         Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

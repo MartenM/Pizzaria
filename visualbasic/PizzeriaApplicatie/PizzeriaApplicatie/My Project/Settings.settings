@@ -9,7 +9,7 @@
       <Value Profile="(Default)">marteih203_pizza-user</Value>
     </Setting>
     <Setting Name="db_wachtwoord" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DATZOUJEWELWILLENWETENHE</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="db_database" Type="System.String" Scope="User">
       <Value Profile="(Default)">marteih203_pizza</Value>

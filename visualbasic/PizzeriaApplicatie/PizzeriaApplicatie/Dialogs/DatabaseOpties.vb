@@ -13,6 +13,7 @@ Public Class DatabaseOpties
     End Sub
 
     Private Sub DatabaseOpties_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Laad de juiste gegevens in de TextBoxen.
         TB_Adres.Text = My.Settings.db_adres
         TB_Gebruikersnaam.Text = My.Settings.db_username
         TB_Wachtwoord.Text = My.Settings.db_wachtwoord

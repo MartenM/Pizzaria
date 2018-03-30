@@ -195,7 +195,7 @@ Partial Class KlantDialog
         Me.Name = "KlantDialog"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "KlantDialog"
+        Me.Text = "Klant"
         Me.Panel2.ResumeLayout(False)
         CType(Me.NUD_Spaarpunten, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

@@ -1,7 +1,7 @@
 ﻿Imports System.Windows.Forms
 
 Public Class KlantDialog
-
+    ' Het ID dat met deze klant is verbonden.
     Public Property id As Integer
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
