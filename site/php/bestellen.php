@@ -94,8 +94,8 @@
                 // Korting afronden op 2 decimalen.
                 $korting = round(($totaalprijs * 0.05), 2);
                 $totaalprijs = $totaalprijs - $korting;
-            } else {
                 $afhalen = true;
+            } else {
                 $adres = $_POST['straat'] . " " . $_POST['huisnummer'] . " " . $_POST['plaats'];
             }
             
