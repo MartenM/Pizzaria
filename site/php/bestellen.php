@@ -1,4 +1,11 @@
 <?php
+    /*
+        Het bestellen.php bestand wordt gebruikt door gebruikers om hun bestellingen te plaatsen.
+        De pizzas die beschikbaar zijn worden hier geladen en de gebruiker kan door middel van een Form zijn bestelling versturen.
+        Op deze pagina worden ook nog een paar checks gedaan om te kijken of de bestelling wel voldoet.
+    */
+
+
     // Start sessie zodat we bij de gebruikers gegevens kunnen.
     session_start();
 
@@ -8,12 +15,15 @@
     // Check of de gebruiker ingelogt is. Zo niet dan stop de php code hier en word de gebruiker doorgestuurd.
     require 'checklogin.php';
 
+    // Wanneer de gebruiker gebanned is laten we het niet toe dat hij nog langer bestellingen kan plaatsen.
     if($_SESSION['banned']){
+        // Set het bericht in het sessie variable zodat dit op de profiel.php pagina kan worden laten zien.
         $_SESSION['msg_notice'] = "U bent verbannen. U kunt niet langer bestellingen plaatsen.";
         header("Location: profiel.php");   
         exit;
     }
 
+    // Laad het pizzaObject
     require 'pizzaObject.php';
 
     // Haal de database connectie op.
@@ -31,6 +41,7 @@
         exit;
     }
     
+    // Laad alle pizzas uit de database.
     $sql = "SELECT * FROM pizzas;";
     $pizzas = $mysqli->query($sql);
 
@@ -44,12 +55,15 @@
         
         $lijst = array();
         
+        // Loop over alle pizzas
         while($rij = $pizzas->fetch_assoc()) {
             
             // Hier word str_replace gebruikt om de spaties om te zetten in _. Dit is omdat de PHP form de spaties tijdens het POST process omzet in _.
             $aantal = $_POST[str_replace(" ", "_", $rij['naam'])];
             
             if(!empty($aantal)){
+                // Hier worden met een paar IF statements een paar background checks uitgevoerd.
+                // Zo weten we zeker dat de bestelling valide is.
                 if(!is_numeric($aantal)){
                     $error = true;
                     $error_msg = "Ongeldige waarde voor aantal pizzas: " . $rij['naam'];
@@ -80,11 +94,13 @@
             }
         }
 		
+        // Als de bestelling leeg is, is deze ongeldig.
 		if($bestelling == '' || count($lijst) == 0){
 			$error = true;
             $error_msg = "Ongeldige bestelling.";
 		}
         
+        // Als er geen error is dan:
         if(!$error){
             $adres = 'N.V.T.';
             $afhalen = false;
@@ -99,12 +115,15 @@
                 $adres = $_POST['straat'] . " " . $_POST['huisnummer'] . " " . $_POST['plaats'];
             }
             
+            // Begin met het succes bericht:
             $_SESSION['msg_succes'] = "De bestelling is succesvol afgerond!<br><br>";
             
+            // Voeg voor elke pizza de text toe:
             foreach($lijst as $object){            
                 $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . " > " . $object->naam . " €" .  ($object->prijs * $object->aantal) . "<br>";
             }
             
+            // Geef daarna de korting en totaal prijs.
             $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<br>Korting: €" . $korting . "<br>";
             $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "=============================";
             $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<br>Totaal: €" . $totaalprijs;
@@ -129,12 +148,16 @@
                 $_SESSION['msg_notice'] = "Er is iets mis gegaan tijdens het bestellen. Geliefd het nog een keer te proberen.<br><br>" . $mysqli->error . "<br><br>" . $sql_bestelling;
             }
             
+            // Geeft de gebruiker de spaarpunten met behulp van een query.
             if($mysqli->query("UPDATE klanten SET spaarpunten = spaarpunten + " . intval($totaalprijs / 2)) . " WHERE id = " +$_SESSION['id']){
                 // Hier kunnen we nog iets verder uitv
                 $_SESSION['msg_succes'] = $_SESSION['msg_succes'] . "<BR><BR>" . intval($totaalprijs / 2) . " spaarpunten verzameld.";
+                
+                // BELANGRIJK: Update ook het $_SESSION variabel spaarpunten. Anders staat op het profiel de verkeerde waarde.
                 $_SESSION['spaarpunten'] = $_SESSION['spaarpunten'] + intval($totaalprijs / 2);
             }
             
+            // Beëindig dit script en ga door naar de profiel pagina.
             header("Location: profiel.php");   
             exit;
             

@@ -1,4 +1,5 @@
 <?php
+    // Start de sessie
     session_start();
 
     // Error message die in het geval van een error gebruikt kan worden.
@@ -58,13 +59,18 @@
                 // Ga naar de login pagina:
                 header("Location: login.php");
                 
+                // Beëindig het script van deze pagina.
+                exit();
             } else{
+                // Zet de error message.
                 $error_msg = "Registratie is mislukt door een onbekende fout!<br>Probeer het later opnieuw.";
             }
         }
         
     }
 
+    // Met behulp van deze functie checken we de variablen.
+    // Wanneer iets niet klopt krijgt $error een bericht.
     function checkVariablen(){
         $error = '';
         if(strlen($_POST['voornaam']) < 3){
@@ -89,6 +95,7 @@
     <!-- Charset -->
     <meta charset="utf-8">
     
+    <!-- Links naar stylesheets -->
     <link rel="stylesheet" href="../theme.css">
     <link rel="stylesheet" href="../animate.css">
     <link rel="stylesheet" href="forms.css">
@@ -97,7 +104,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../resources/fav-icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../resources/fav-icons/favicon-16x16.png">  
     
-    <!-- Latest compiled and minified CSS van boostrap -->
+    <!-- Latest compiled and minified CSS van boostrap. Dit gebruiken we om de website layout mee te maken -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme voor boostrap -->
@@ -130,12 +137,16 @@
         </div>
     </nav>
     
+    <!-- Het venster waar de register box zich in bevindt -->
     <div class="venster">
+        <!-- De classe container zorgt er voor dat alles netjes in het midden komt. -->
         <div class="container">
+            <!-- Als de gebruiker met een error naar deze pagina is gekomen, dan laten we die hier zien. -->
             <div class="errorbox <?php if($error_msg == '') echo 'inactief'; ?>">
                 <span><?php echo $error_msg;?></span>
             </div>
             
+            <!-- De DIV die het register From bevat. Heeft de zelfde style als het loginform -->
             <div class="loginform">
                 <form action="register.php" method="post">
                     <!-- Dit is een redelijk normaal PHP form dat wanneer het form verstuurd word opgestuurd zal worden in de POST methode.

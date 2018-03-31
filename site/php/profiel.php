@@ -1,6 +1,8 @@
 <?php
+    // Start de sessie.
     session_start();
 
+    // Check of de gebruiker wel ingelogd is.
     require 'checklogin.php';
 
     $error_msg = '';
@@ -16,9 +18,11 @@
     $mysqli = '';
     require 'db.php';
 
+    // Laad alle bestellingen in $geschiedenis
     $sql = "SELECT * FROM bestellingen WHERE klant=" . $_SESSION['id'] . " ORDER BY datum DESC";
     $geschiedenis = $mysqli->query($sql);
 
+    // Laad het totaal aantal bestellingen.
     $sql = "SELECT COUNT(*) as 'aantal' FROM bestellingen WHERE klant=" . $_SESSION['id'];
     $aantal = $mysqli->query($sql)->fetch_assoc()['aantal'];
 
@@ -33,6 +37,7 @@
     <!-- Charset -->
     <meta charset="utf-8">
 
+    <!-- Hier laden we de CSS stylesheets van deze pagina -->
     <link rel="stylesheet" href="..\theme.css">
     <link rel="stylesheet" href="..\animate.css">
     <link rel="stylesheet" href="profielpagina.css">
@@ -76,24 +81,30 @@
         </div>
     </nav>
 
+    <!-- Venster dat het profiel bevat -->
     <div class="venster">
         <div class="container">
 
+            <!-- Wanneer er berichten zijn dan laten we die hier zien. Anders hiden we deze HTML objecten -->
             <div class="succes-box <?php if($succes_msg == '') echo 'hide'; ?>">
                 <span><?php echo $succes_msg;?></span>
             </div>
             
+            <!-- Wanneer er berichten zijn dan laten we die hier zien. Anders hiden we deze HTML objecten -->
             <div class="notice-box <?php if($notice_msg == '') echo 'hide'; ?>">
                 <span><?php echo $notice_msg;?></span>
             </div>
 
+            <!-- Start van de profiel box -->
             <div class="profiel">
+                <!-- De naam van de gebruiker -->
                 <div class="naam">
                     <h2>Welkom terug,</h2>
                     <span><?php echo $_SESSION['voornaam'] . ' ' . $_SESSION['achternaam']; ?></span>
                     <span class="id">#<?php echo $_SESSION['id']; ?></span>
                 </div>
 
+                <!-- In dit menu laden we een aantal gegevens over de gebruiker -->
                 <div class="menu clearfix">
                     <div class="stats">
                         <ul>
@@ -109,11 +120,14 @@
                     </div>
                 </div>
                 
-
+                <!-- Deze DIV bevat een tabel met de geschiedis van de gebruiker -->
+                <!-- Deze word aan het begin van de pagina geladen -->
                 <div class="geschiedenis">
                     <h3>Geschiedenis</h3>
+                    <!-- Als de gebruiker nog geen bestellingen heeft laten we de dit bericht zien. -->
                     <?php if($geschiedenis->num_rows == 0) echo "<span style='color: green'>U heeft nog geen bestellingen geplaats.</span>"; ?>
                     
+                    <!-- Als de gebruiker nog geen bestellingen heeft laten we de tabel niet zien -->
                     <div class="scroll <?php if($geschiedenis->num_rows == 0) echo "hide"; ?> ">
                         <table>
                             <tr>
@@ -125,12 +139,11 @@
                                 <th>Afgehandeld</th>
                             </tr>
                             <?php
-                            
                                 if($geschiedenis->num_rows == 0){
                                     // Origneel gebruik voor een bericht. Nu niet langer meer.
                                     // Misschien nog voor later gebruik.
                                 } else {
-                            
+                                    // Loop over alle items heen en echo ze naar de pagina
                                     while($rij = $geschiedenis->fetch_assoc()) {
                                         echo '<tr>';
                                 
@@ -145,6 +158,7 @@
                                         echo "<td>€ " . $rij['totaalprijs'] . "</td>";
                                         echo "<td>" . $rij['datum'] . "</td>";
 
+                                        // Deze code is nodig om status de kleuren te gegeven voor op de pagina.
                                         if($rij['status'] == 'OPEN'){
                                             echo "<td>" . "<span class='nee'>Nee</span>" . "</td>";
                                         } else if($rij['status'] == 'GESLOTEN'){
